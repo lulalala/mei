@@ -1,0 +1,3 @@
+rails:
+  secret_token: ''
+  secret_key_base: ''
