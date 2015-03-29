@@ -1,0 +1,16 @@
+<article class="post">
+  <header class="info">
+    <% if @post.email %>
+      <%= mail_to @post.email do %>
+        <span class="author"><%= @post.author || "anonymous" %></span>
+      <% end %>
+    <% else %>
+      <span class="author"><%= @post.author %></span>
+    <% end %>
+    <%= time_tag @post.created_at %>
+    <span class="id">#<%= @post.id %></span>
+  </header>
+  <div class="content">
+    <%= @post.content %>
+  </div>
+</article>

@@ -1,0 +1,9 @@
+<section class="topic">
+  <h1><%= @topic.title %></h1>
+
+  <%= render_cell_collection :post, :show, @topic.posts %>
+
+  <div class="actions">
+    <%= link_to 'Reply', @topic %>
+  </div>
+</section>

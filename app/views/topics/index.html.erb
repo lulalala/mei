@@ -1,0 +1,11 @@
+<div class="header">
+  <%= render_cell(:topic, :form, @board.topics.build) %>
+</div>
+
+<div class="main">
+  <%= render_cell_collection :topic, :show, @topics %>
+  <%= paginate @topics %>
+</div>
+
+<div class="footer">
+</div>

@@ -1,0 +1,22 @@
+<%= form_for(@topic) do |f| %>
+  <%= f.hidden_field :board_id %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <%= f.fields_for :posts, @post do |pf| %>
+    <div class="field">
+      <%= pf.label :author %>
+      <%= pf.text_field :author %>
+    </div>
+    <div class="field">
+      <%= pf.label :email %>
+      <%= pf.text_field :email %>
+    </div>
+    <%= pf.label :content %><br />
+    <%= pf.text_area :content %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
