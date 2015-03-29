@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Board.seed(:id) do |b|
+  b.id = 1
+  b.seo_name = 'i'
+  b.name = 'imageboard'
+end
