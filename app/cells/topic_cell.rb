@@ -13,6 +13,9 @@ class TopicCell < Cell::Rails
     else
       @post = @topic.posts.first
     end
+    if @post.images.empty?
+      @post.images.build
+    end
     render
   end
 end

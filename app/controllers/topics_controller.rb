@@ -40,6 +40,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def topic_params
-    params.require(:topic).permit(:title, :board_id, posts_attributes: [:author, :content, :email])
+    params.require(:topic).permit(:title, :board_id, posts_attributes: [:author, :content, :email, images_attributes:[:image]])
   end
 end

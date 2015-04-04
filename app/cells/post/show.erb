@@ -10,6 +10,11 @@
     <%= time_tag @post.created_at %>
     <span class="id">#<%= @post.id %></span>
   </header>
+  <% @post.images.each do |image| %>
+    <%= link_to image_url(image.image.url), class:'img' do %>
+      <%= image_tag image_url(image.image.thumb.url) %>
+    <% end %>
+  <% end %>
   <div class="content">
     <%= @post.content %>
   </div>

@@ -31,6 +31,6 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:content, :author, :email, :topic_id)
+    params.require(:post).permit(:content, :author, :email, :topic_id, images_attributes:[:image])
   end
 end

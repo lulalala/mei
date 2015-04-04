@@ -8,7 +8,8 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
-  <%= f.label :content %><br />
+  <%= render_cell :post, :image_upload_control, f %>
+  <%= f.label :content %>
   <%= f.text_area :content %>
   <div class="actions">
     <%= f.submit %>

@@ -13,7 +13,8 @@
       <%= pf.label :email %>
       <%= pf.text_field :email %>
     </div>
-    <%= pf.label :content %><br />
+    <%= render_cell :post, :image_upload_control, pf %>
+    <%= pf.label :content %>
     <%= pf.text_area :content %>
   <% end %>
   <div class="actions">

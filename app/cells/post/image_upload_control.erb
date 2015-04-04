@@ -1,0 +1,6 @@
+<% @post_field.fields_for :images do |i| %>
+  <div class="field">
+    <%= i.label :image %>
+    <%= i.file_field :image %>
+  </div>
+<% end %>
