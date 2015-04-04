@@ -8,4 +8,6 @@ class ApplicationController < ActionController::Base
     @board = Board.find_by_seo_name!(params[:board])
     default_url_options[:board] = params[:board]
   end
+
+  after_action :prepare_unobtrusive_flash
 end

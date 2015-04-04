@@ -45,6 +45,8 @@ gem 'quiet_assets', '~> 1.1'
 
 gem 'settingslogic', '~> 2.0'
 
+gem 'unobtrusive_flash', '~> 3.1.0'
+
 # Image
 gem 'mini_magick', '~> 4.2.0'
 gem 'carrierwave', '~> 0.10.0'
