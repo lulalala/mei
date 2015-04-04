@@ -3,4 +3,9 @@ class PostCell < Cell::Rails
     @post = post
     render
   end
+
+  def form(post)
+    @post = post
+    render
+  end
 end
