@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331150050) do
+ActiveRecord::Schema.define(version: 20150419153856) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255, null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20150331150050) do
 
   add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
 
+  create_table "key_values", force: :cascade, comment: "Key-value store for global information" do |t|
+    t.string "key",   limit: 255,   null: false, comment: "variable name"
+    t.text   "value", limit: 65535,              comment: "variable value"
+  end
+
+  add_index "key_values", ["key"], name: "index_key_values_on_key", unique: true, using: :btree
+
   create_table "posts", force: :cascade, comment: "text content posted. New post or reply comments are all posts." do |t|
     t.text     "content",    limit: 65535,              comment: "text content"
     t.string   "author",     limit: 255,                comment: "author name"
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150331150050) do
     t.integer  "board_id",   limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.datetime "bumped_at",                           comment: "topic bump time"
   end
 
   add_index "topics", ["board_id"], name: "index_topics_on_board_id", using: :btree
