@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419153856) do
+ActiveRecord::Schema.define(version: 20150421152549) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255, null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -59,7 +59,18 @@ ActiveRecord::Schema.define(version: 20150419153856) do
 
   add_index "topics", ["board_id"], name: "index_topics_on_board_id", using: :btree
 
+  create_table "view_fragments", force: :cascade, comment: "Custom HTML fragments to be displayed" do |t|
+    t.integer  "board_id",   limit: 4
+    t.string   "name",       limit: 255,   null: false, comment: "name for referencing"
+    t.text     "content",    limit: 65535,              comment: "html fragment"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "view_fragments", ["board_id", "name"], name: "index_view_fragments_on_board_id_and_name", unique: true, using: :btree
+
   add_foreign_key "images", "posts"
   add_foreign_key "posts", "topics"
   add_foreign_key "topics", "boards"
+  add_foreign_key "view_fragments", "boards"
 end
