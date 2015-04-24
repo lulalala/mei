@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= render_body_classes %>">
 <header>
   <%= render_view_fragment :top %>
   <h1><%= link_to @board.name, board_path %></h1>
