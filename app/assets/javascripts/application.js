@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //
 //= require unobtrusive_flash
 //= require unobtrusive_flash_ui
 //
 //= require_tree .
+//
+//= require turbolinks
