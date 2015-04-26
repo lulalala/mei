@@ -17,8 +17,20 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.json {
+          render json: {
+            success: true,
+            redirect_to: topic_path(@topic)
+          }
+        }
       else
         format.html { render :new }
+        format.json {
+          flash[:error] = @topic.errors.full_messages.join('<br/>').html_safe
+          render json: {
+            success: false
+          }
+        }
       end
     end
   end

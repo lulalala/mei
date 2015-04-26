@@ -8,8 +8,20 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post.topic, notice: 'Post was successfully created.' }
+        format.json {
+          render json: {
+            success: true,
+            redirect_to: topic_path(@post.topic)
+          }
+        }
       else
-        format.html { render :new }
+        format.html { redirect_to @post.topic }
+        format.json {
+          flash[:error] = @post.errors.full_messages.join('<br/>').html_safe
+          render json: {
+            success: false
+          }
+        }
       end
     end
   end
