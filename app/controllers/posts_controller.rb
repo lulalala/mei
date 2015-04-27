@@ -2,26 +2,30 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:destroy]
 
   # POST /posts
+  # For creating new topic or replying
   def create
-    @post = Post.new(post_params)
+    @post_form = PostForm.new.from_params(params[:post])
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post.topic, notice: 'Post was successfully created.' }
+      if @post_form.save
+        flash[:notice] = 'Successfully created.'
+
         format.json {
           render json: {
             success: true,
-            redirect_to: topic_path(@post.topic)
+            redirect_to: topic_path(@post_form.topic)
           }
         }
+        format.html { redirect_to @post_form.topic }
       else
-        format.html { redirect_to @post.topic }
+        flash[:error] = @post_form.error_messages.join('<br/>').html_safe
+
         format.json {
-          flash[:error] = @post.errors.full_messages.join('<br/>').html_safe
           render json: {
             success: false
           }
         }
+        format.html { redirect_to @post_form.topic }
       end
     end
   end
@@ -39,10 +43,5 @@ private
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def post_params
-    params.require(:post).permit(:content, :author, :email, :topic_id, images_attributes:[:image, :remote_image_url])
   end
 end

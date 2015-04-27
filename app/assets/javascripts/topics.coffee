@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('form#new_topic, form#new_post').on 'ajax:success', (event, data, status, xhr)->
+  $('form#new_post').on 'ajax:success', (event, data, status, xhr)->
     if data['success']
       location.reload()

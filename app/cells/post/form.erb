@@ -1,5 +1,16 @@
-<%= form_for(@post, format:'json', remote:true) do |f| %>
-  <%= f.hidden_field :topic_id %>
+<%= form_for(@post_form, format:'json', remote:true) do |f| %>
+  <% if @post_form.new_topic? %>
+    <%= f.hidden_field :board_id %>
+  <% else %>
+    <%= f.hidden_field :topic_id %>
+  <% end %>
+
+  <% if @post_form.new_topic? %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :author %>
     <%= f.text_field :author %>

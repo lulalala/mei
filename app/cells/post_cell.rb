@@ -6,11 +6,8 @@ class PostCell < Cell::Rails
     render
   end
 
-  def form(post)
-    @post = post
-    if @post.images.empty?
-      @post.images.build
-    end
+  def form(topic)
+    @post_form = PostForm.new.from_topic(topic)
     render
   end
 
