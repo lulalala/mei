@@ -51,6 +51,7 @@ gem 'unobtrusive_flash', '~> 3.1.0'
 # Image
 gem 'mini_magick', '~> 4.2.0'
 gem 'carrierwave', '~> 0.10.0'
+gem 'remotipart', '~> 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
