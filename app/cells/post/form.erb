@@ -1,4 +1,4 @@
-<%= form_for(@post_form, format:'json', remote:true) do |f| %>
+<%= form_for(@post_form, format:'json', remote:true, data:{type: :json}) do |f| %>
   <% if @post_form.new_topic? %>
     <%= f.hidden_field :board_id %>
   <% else %>
