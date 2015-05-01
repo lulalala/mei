@@ -6,6 +6,13 @@ class Post < ActiveRecord::Base
     attributes.values_at(:remote_image_url, :image).all? &:blank?
   }
 
+  validate :validate_content
+  def validate_content
+    if images.blank? && content.blank?
+      errors.add(:base, 'Image or content is required')
+    end
+  end
+
   after_save :bump_topic
   def bump_topic
     now = Time.now

@@ -47,7 +47,16 @@ class PostForm
   end
 
   def valid?
-    @post.valid? && @topic.valid?
+    validity = true
+    [post, topic].each do |object|
+      if !object.valid?
+        validity = false
+        object.errors.each do |key, values|
+          errors[key] = values
+        end
+      end
+    end
+    validity
   end
 
   def new_topic?
