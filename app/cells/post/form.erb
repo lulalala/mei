@@ -23,7 +23,7 @@
   <%= f.label :content %>
   <%= f.text_area :content %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit data:{type: :json, disable_with:'Submitting...'} %>
     <%= image_tag 'loading.svg', class:'loading' %>
   </div>
 <% end %>
