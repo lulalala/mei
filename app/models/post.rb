@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
     attributes.values_at(:remote_image_url, :image).all? &:blank?
   }
 
+  nilify_blanks
+
   validate :validate_content
   def validate_content
     if images.blank? && content.blank?
