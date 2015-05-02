@@ -34,7 +34,7 @@ gem 'puma', '~> 2.11.1'
 # gem 'capistrano-rails', group: :development
 
 gem 'cells', '~> 3.11.3'
-gem 'cells-collection', '~> 0.0.1'
+gem 'cells-collection', '~> 0.0.2'
 gem 'kaminari', '~> 0.16'
 
 gem 'squeel', '~> 1.2'
