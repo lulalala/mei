@@ -7,10 +7,11 @@
   <%= jquery_include_tag :google %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= render_custom_partial :bottom_of_head %>
 </head>
 <body class="<%= render_body_classes %>">
 <header>
-  <%= render_view_fragment :top %>
+  <%= render_custom_partial :top_of_header %>
   <h1><%= link_to @board.name, board_path %></h1>
 </header>
 
@@ -18,7 +19,7 @@
 
 <footer>
   <%= link_to 'Board Index', board_path %>
-  <%= render_view_fragment :bottom %>
+  <%= render_custom_partial :bottom_of_footer %>
 </footer>
 </body>
 </html>

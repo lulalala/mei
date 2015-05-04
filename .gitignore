@@ -20,3 +20,5 @@
 /config/app_config.yml
 
 /public/uploads
+
+/app/views/partials
