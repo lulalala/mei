@@ -8,7 +8,7 @@
   <% if @post_form.new_topic? %>
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, autocomplete:'off' %>
     </div>
   <% end %>
   <div class="field">
@@ -21,7 +21,7 @@
   </div>
   <%= render_cell :post, :image_upload_control, f %>
   <%= f.label :content %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, autocomplete:'off' %>
   <div class="actions">
     <%= f.submit data:{type: :json, disable_with:'Submitting...'} %>
     <%= image_tag 'loading.svg', class:'loading' %>
