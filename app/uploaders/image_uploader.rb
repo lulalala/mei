@@ -48,8 +48,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    if original_filename
+      if model && model.read_attribute(mounted_as).present?
+        model.read_attribute(mounted_as)
+      else
+        base = file.send(:split_extension, original_filename).first
+        "#{Time.now.to_i}_#{base[0..16]}.#{get_extension}"
+      end
+    end
+  end
 
+  def get_extension
+    FastImage.type(file.to_file)
+  end
 end
