@@ -2,8 +2,4 @@
   <h1><%= @topic.title %></h1>
 
   <%= render_cell_collection :post, :show, @topic.posts.includes(:images) %>
-
-  <div class="actions">
-    <%= link_to 'Reply', @topic %>
-  </div>
 </section>
