@@ -30,6 +30,19 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts for AJAX
+  # For creating new topic or replying
+  def new
+    if params[:topic_id]
+      @topic = Topic.find(params[:topic_id])
+    elsif params[:board_id]
+      @topic = Board.find(params[:board_id]).topics.new
+    elsif params[:post_id]
+      @topic = Topic.joins(:posts).find_by('posts.id' => params[:post_id])
+    end
+    render html:render_cell(:post, :form, @topic)
+  end
+
   # DELETE /posts/1
   def destroy
     @post.destroy

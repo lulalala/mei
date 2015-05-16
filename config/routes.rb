@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope '/:board' do
     get '/' => 'topics#index', as: :board
     resources :topics, only:[:show]
-    resources :posts, only:[:create]
+    resources :posts, only:[:create, :new]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
