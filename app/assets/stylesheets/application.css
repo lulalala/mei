@@ -13,6 +13,7 @@
  *= require general
  *= require topics
  *= require posts
+ *= require reply
  *
  *= require unobtrusive_flash_ui
  */
