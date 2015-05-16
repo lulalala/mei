@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421152549) do
+ActiveRecord::Schema.define(version: 20150516062535) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255, null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150421152549) do
   add_index "boards", ["seo_name"], name: "index_boards_on_seo_name", unique: true, using: :btree
 
   create_table "images", force: :cascade, comment: "image" do |t|
-    t.integer  "post_id",    limit: 4
+    t.integer  "post_id",    limit: 4,   null: false
     t.string   "image",      limit: 255,              comment: "filename"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150421152549) do
     t.text     "content",    limit: 65535,              comment: "text content"
     t.string   "author",     limit: 255,                comment: "author name"
     t.string   "email",      limit: 255,                comment: "email"
-    t.integer  "topic_id",   limit: 4
+    t.integer  "topic_id",   limit: 4,     null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150421152549) do
 
   create_table "topics", force: :cascade, comment: "topic of discussion, also called thread" do |t|
     t.string   "title",      limit: 255,              comment: "title"
-    t.integer  "board_id",   limit: 4
+    t.integer  "board_id",   limit: 4,   null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.datetime "bumped_at",                           comment: "topic bump time"
