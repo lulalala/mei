@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20150516062535) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
-    t.string   "seo_name",   limit: 255, null: false, comment: "represent name in URL. Must be URL valid characters."
-    t.string   "name",       limit: 255, null: false, comment: "display name on top of page"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
+    t.string   "name",       limit: 255,   null: false, comment: "display name on top of page"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "config",     limit: 65535,              comment: "board-specific configuration in YAML"
   end
 
   add_index "boards", ["seo_name"], name: "index_boards_on_seo_name", unique: true, using: :btree
