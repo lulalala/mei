@@ -39,6 +39,7 @@ gem 'kaminari', '~> 0.16'
 
 gem 'squeel', '~> 1.2'
 gem 'nilify_blanks', '~> 1.2.1'
+gem 'second_level_cache', '~> 2.1.2'
 
 gem 'migration_comments', '~> 0.3'
 gem 'seed-fu', '~> 2.3.5'

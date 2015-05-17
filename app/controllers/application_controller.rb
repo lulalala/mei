@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_board
   def set_board
-    @board = Board.find_by_seo_name!(params[:board])
+    @board = Board.fetch_by_uniq_keys!(seo_name:params[:board])
     default_url_options[:board] = params[:board]
   end
 
