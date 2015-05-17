@@ -13,7 +13,8 @@ $ ->
     if replyContainer.length
       textArea = replyContainer.find('textarea')
       if currentTopicId == topicId
-        insertPostId(textArea, postId)
+        if ! firstPostFromTopic(topicId, postId)
+          insertPostId(textArea, postId)
       else
         if textArea.value == '' || confirm('You are about to switch thread which would cause currently unsaved reply to be cleared. Continue?')
           # clear current form
@@ -35,8 +36,14 @@ insertPostId = (textarea, postId)->
 loadReplyForm = (url, topicId, postId)->
   $.get(url, topic_id:topicId).done (html)->
     $('body>footer').before("<div id='reply-container'>" + html + "</div>")
-    insertPostId($('#reply-container').find('textarea'), postId)
+    if ! firstPostFromTopic(topicId, postId)
+      insertPostId($('#reply-container').find('textarea'), postId)
     currentTopicId = topicId
 
 prepareUrl = (path)->
   path.replace(/topics.*/, 'posts/new')
+
+firstPostFromTopic = (topicId, postId)->
+  topicEl = $(".topic[data-id=#{topicId}]")
+  firstPost = topicEl.find(".post:first-of-type")
+  firstPost.data('id') == postId
