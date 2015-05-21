@@ -1,12 +1,17 @@
-<% @post_field.fields_for :images do |i| %>
-  <div class="field image">
-    <%= i.label :image %>
-    <%= i.file_field :image, class:'upload', autocomplete:'off' %>
-    <a href="#" class="switch">using url</a>
-  </div>
-  <div class="field image" style="display:none">
-    <%= i.label :remote_image_url, Post.human_attribute_name(:image) %>
-    <%= i.text_field :remote_image_url, placeholder:'http://example.com/guava.png', disabled:true, autocomplete:'off', class:'upload' %>
-    <a href="#" class="switch">from local</a>
-  </div>
-<% end %>
+<div class="file_fields">
+  <% @post_field.fields_for :images do |i| %>
+    <div class="field image">
+      <%= i.label :image %>
+      <%= i.file_field :image, class:'upload', autocomplete:'off' %>
+      <a href="#" class="switch">using url</a>
+    </div>
+    <div class="field image" style="display:none">
+      <%= i.label :remote_image_url, Post.human_attribute_name(:image) %>
+      <%= i.text_field :remote_image_url, placeholder:'http://example.com/guava.png', disabled:true, autocomplete:'off', class:'upload' %>
+      <a href="#" class="switch">from local</a>
+    </div>
+  <% end %>
+</div>
+<div class="actions">
+  <a class="add" href="#">add another</a>
+</div>

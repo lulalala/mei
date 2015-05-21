@@ -20,3 +20,16 @@ updateView = ->
       field.hide()
     else
       field.show()
+
+$ ->
+  $(document).on 'click', '.actions .add', (e)->
+    e.preventDefault()
+
+    fileFields = $(e.target).parent().prev('.file_fields')
+    if !fileFields.data("nestedAttributes")
+      fileFields.nestedAttributes(
+        bindAddTo: $(e.target)
+        collectionName: 'images'
+        collectIdAttributes: false
+        $clone: fileFields.children()
+      ).nestedAttributes("add")
