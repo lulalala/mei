@@ -3,33 +3,33 @@
 $(document).on 'ready', (e) ->
   updateView()
 
-$(document).on 'click', '.field.image a.switch', (e) ->
+$(document).on 'click', '.file-section .actions a.switch', (e) ->
   e.preventDefault()
 
   # toggle disable
-  $('.field.image input.upload').prop 'disabled', (i,v)->
+  $('.field input.upload').prop 'disabled', (i,v)->
     !v
 
   updateView()
 
 updateView = ->
   # visibility
-  $('.field.image ').each (index, field)->
-    field = $(field)
-    if field.find('input.upload').prop('disabled')
-      field.hide()
+  $('.field input').each (index, input)->
+    input = $(input)
+    if input.prop('disabled')
+      input.addClass('hide')
     else
-      field.show()
+      input.removeClass('hide')
 
 $ ->
-  $(document).on 'click', '.actions .add', (e)->
+  $(document).on 'click', '.file-section .actions .add', (e)->
     e.preventDefault()
 
-    fileFields = $(e.target).parent().prev('.file_fields')
-    if !fileFields.data("nestedAttributes")
-      fileFields.nestedAttributes(
+    container = $(e.target).parents('.file-section')
+    if !container.data("nestedAttributes")
+      container.nestedAttributes(
         bindAddTo: $(e.target)
         collectionName: 'images'
         collectIdAttributes: false
-        $clone: fileFields.children()
+        $clone: container.children('.field')
       ).nestedAttributes("add")
