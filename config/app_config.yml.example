@@ -1,3 +1,6 @@
 rails:
   secret_token: ''
   secret_key_base: ''
+carrierwave:
+  watermark:
+    font: 'Nimbus-Sans-Bold'

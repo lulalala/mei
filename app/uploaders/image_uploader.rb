@@ -33,7 +33,9 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :remove_animation
     process :resize_to_fit => [250, 250]
+    process :watermark
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -61,5 +63,28 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def get_extension
     FastImage.type(file.to_file)
+  end
+
+  def watermark
+    manipulate! do |img|
+      return img if !img.mime_type.include?('gif')
+
+      img.combine_options do |cmd|
+        cmd.gravity 'SouthEast'
+        cmd.draw 'text 10,10 "GIF"'
+        cmd.font AppConfig.carrierwave.watermark.font
+        cmd.pointsize '24'
+        cmd.fill 'black'
+      end
+    end
+  end
+
+  def remove_animation
+    manipulate! do |img|
+      if img.mime_type.match /gif/
+        img.collapse!
+      end
+      img
+    end
   end
 end
