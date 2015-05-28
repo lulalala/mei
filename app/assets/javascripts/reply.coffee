@@ -1,3 +1,5 @@
+#= require image_upload
+
 replyContainer = null
 currentTopicId = null
 
@@ -39,6 +41,8 @@ loadReplyForm = (url, topicId, postId)->
     if ! firstPostFromTopic(topicId, postId)
       insertPostId($('#reply-container').find('textarea'), postId)
     currentTopicId = topicId
+
+    new ImageUpload($('#reply-container .file-section'))
 
 prepareUrl = (path)->
   path.replace(/topics.*/, 'posts/new')

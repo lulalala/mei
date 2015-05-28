@@ -1,35 +1,55 @@
 # Image upload control
 
-$(document).on 'ready', (e) ->
-  updateView()
+class @ImageUpload
+  uploadMethod: null
 
-$(document).on 'click', '.file-section .actions a.switch', (e) ->
-  e.preventDefault()
+  constructor: (@container)->
+    @setupNestedAttributes()
+    @setupSwtiching()
 
-  # toggle disable
-  $('.field input.upload').prop 'disabled', (i,v)->
-    !v
+  setupNestedAttributes: ->
+    @container.nestedAttributes
+      bindAddTo: $(".actions .add")
+      collectionName: 'images'
+      collectIdAttributes: false
+      $clone: @container.children('.field')
 
-  updateView()
+    @container.find('input').change =>
+      inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").filter (index)->
+        @value.length == 0
 
-updateView = ->
-  # visibility
-  $('.field input').each (index, input)->
-    input = $(input)
-    if input.prop('disabled')
-      input.addClass('hide')
+      if inputs.length == 0
+        @container.nestedAttributes("add")
+
+  setupSwtiching: ->
+    @updateView()
+    @setCurrentUploadMethod()
+
+    @container.find('.actions a.switch').click (e)=>
+      e.preventDefault()
+
+      # toggle disable
+      @container.find('.field input.upload').prop 'disabled', (i,v)=>
+        !v
+
+      @updateView()
+      @setCurrentUploadMethod()
+
+  setCurrentUploadMethod: ->
+    if @container.find("input:enabled.upload[type=file]").length
+      @uploadMethod = 'file'
     else
-      input.removeClass('hide')
+      @uploadMethod = 'url'
+
+
+  updateView: ->
+    # visibility
+    @container.find('.field input').each (index, input)=>
+      input = $(input)
+      if input.prop('disabled')
+        input.addClass('hide')
+      else
+        input.removeClass('hide')
 
 $ ->
-  $(document).on 'click', '.file-section .actions .add', (e)->
-    e.preventDefault()
-
-    container = $(e.target).parents('.file-section')
-    if !container.data("nestedAttributes")
-      container.nestedAttributes(
-        bindAddTo: $(e.target)
-        collectionName: 'images'
-        collectIdAttributes: false
-        $clone: container.children('.field')
-      ).nestedAttributes("add")
+  new ImageUpload($('.file-section'))
