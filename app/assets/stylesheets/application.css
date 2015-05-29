@@ -14,6 +14,7 @@
  *= require topics
  *= require posts
  *= require reply
+ *= require pagination
  *
  *= require unobtrusive_flash_ui
  */
