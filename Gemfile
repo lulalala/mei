@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bundler', '>= 1.8.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -56,6 +57,11 @@ gem 'mini_magick', '~> 4.2.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'remotipart', '~> 1.2.1'
 gem 'fastimage', '~> 1.7.0'
+
+# Assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-js-cookie'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

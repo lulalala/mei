@@ -13,6 +13,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require js-cookie
 //
 //= require unobtrusive_flash
 //= require unobtrusive_flash_ui
