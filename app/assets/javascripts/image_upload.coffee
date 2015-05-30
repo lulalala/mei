@@ -14,8 +14,8 @@ class @ImageUpload
       collectIdAttributes: false
       $clone: @container.children('.field')
 
-    @container.find('input').change =>
-      inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").filter (index)->
+    @container.find('input').focus (e)=>
+      inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").not(e.target).filter (index)->
         @value.length == 0
 
       if inputs.length == 0
