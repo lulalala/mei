@@ -8,6 +8,13 @@ class Post < ActiveRecord::Base
 
   nilify_blanks
 
+  auto_html_for :content do
+    html_escape
+    youtube
+    link :target => "_blank", :rel => "nofollow"
+    simple_format
+  end
+
   validate :validate_content
   def validate_content
     if images.blank? && content.blank?

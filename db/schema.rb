@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516062535) do
+ActiveRecord::Schema.define(version: 20150530134256) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -40,12 +40,13 @@ ActiveRecord::Schema.define(version: 20150516062535) do
   add_index "key_values", ["key"], name: "index_key_values_on_key", unique: true, using: :btree
 
   create_table "posts", force: :cascade, comment: "text content posted. New post or reply comments are all posts." do |t|
-    t.text     "content",    limit: 65535,              comment: "text content"
-    t.string   "author",     limit: 255,                comment: "author name"
-    t.string   "email",      limit: 255,                comment: "email"
-    t.integer  "topic_id",   limit: 4,     null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "content",      limit: 65535,              comment: "text content"
+    t.string   "author",       limit: 255,                comment: "author name"
+    t.string   "email",        limit: 255,                comment: "email"
+    t.integer  "topic_id",     limit: 4,     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.text     "content_html", limit: 65535,              comment: "text content processed into html"
   end
 
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
