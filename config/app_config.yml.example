@@ -1,3 +1,8 @@
+domain_setting:
+  :protocol: 'http'
+  :subdomain: null
+  :domain: ''
+  :port: null
 rails:
   secret_token: ''
   secret_key_base: ''
