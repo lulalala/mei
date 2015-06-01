@@ -53,6 +53,8 @@ gem 'settingslogic', '~> 2.0'
 
 gem 'unobtrusive_flash', '~> 3.1.0'
 
+gem 'sitemap_generator', '~> 5.0.5'
+
 # Image
 gem 'mini_magick', '~> 4.2.0'
 gem 'carrierwave', '~> 0.10.0'
