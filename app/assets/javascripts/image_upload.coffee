@@ -14,11 +14,17 @@ class @ImageUpload
       collectIdAttributes: false
       $clone: @container.children('.field')
 
-    @container.find('input').focus (e)=>
-      inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").not(e.target).filter (index)->
+    @container.find('input[type=url]').focus (e)=>
+      @addInput(e.target)
+
+    @container.find('input[type=file]').change (e)=>
+      @addInput(e.target)
+
+  addInput: (target)->
+      empty_file_inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").not(target).filter (index)->
         @value.length == 0
 
-      if inputs.length == 0
+      if empty_file_inputs.length == 0
         @container.nestedAttributes("add")
 
   setupSwtiching: ->
