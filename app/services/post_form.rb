@@ -36,6 +36,8 @@ class PostForm
   def attributes(params)
     @post.assign_attributes(post_params(params))
 
+    @post.images << build_images_from_params(params)
+
     if new_topic?
       if params[:title]
         @topic.title = params[:title]
@@ -44,6 +46,30 @@ class PostForm
         @topic.board_id = params[:board_id]
       end
     end
+  end
+
+  def build_images_from_params(params)
+    images = []
+
+    images_attributes = image_params(params)
+
+    if images_attributes.present?
+      images_attributes.values.each do |attr|
+        if attr[:image].present?
+          if attr[:image].is_a? Array # HTML file input with 'multiple' attribute
+            attr[:image].each do |file|
+              images << Image.new(image:file)
+            end
+          else
+            images << Image.new(attr)
+          end
+        elsif attr[:remote_image_url].present?
+          images << Image.new(attr)
+        end
+      end
+    end
+
+    images
   end
 
   def valid?
@@ -77,7 +103,11 @@ class PostForm
   end
 
   def post_params(params)
-    params.permit(:author, :content, :email, :topic_id, images_attributes:[:image, :remote_image_url])
+    params.permit(:author, :content, :email, :topic_id)
+  end
+
+  def image_params(params)
+    params.permit(images_attributes: [:remote_image_url, {image:[]}])[:images_attributes]
   end
 
   # Necessary code

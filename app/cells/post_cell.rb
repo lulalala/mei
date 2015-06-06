@@ -11,8 +11,8 @@ class PostCell < Cell::Rails
     render
   end
 
-  def image_upload_control(post_field)
-    @post_field = post_field
+  def image_upload_control(form_field)
+    @form_field = form_field
     render
   end
 end

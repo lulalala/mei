@@ -4,9 +4,9 @@
     <a class="switch url-upload" href="#">switch to url upload</a>
     <a class="switch normal-upload hide" href="#">switch to normal upload</a>
   </div>
-  <% @post_field.fields_for :images do |i| %>
+  <% @form_field.fields_for :images do |i| %>
     <div class="field">
-      <%= i.file_field :image, class:'upload', autocomplete:'off' %>
+      <%= i.file_field :image, class:'upload', autocomplete:'off', multiple:true %>
       <%= i.url_field :remote_image_url, placeholder:'http://example.com/guava.png', disabled:true, autocomplete:'off', class:'upload hide' %>
     </div>
   <% end %>
