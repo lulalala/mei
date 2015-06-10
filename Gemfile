@@ -74,8 +74,15 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 1.3.3'
+  gem 'spring', '~> 1.3.6'
 
   gem 'mysql2', '~> 0.3.18' # Sequel Pro is too good that I can't escape MySQL
+end
+
+group :test, :darwin do
+  gem 'rspec-rails', '~> 3.2.3'
+  gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'guard-rspec', '~> 4.5.2'
+  gem 'rb-fsevent', '~> 0.9.5'
 end
 
