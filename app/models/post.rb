@@ -1,3 +1,5 @@
+require 'auto_html/filters/quote'
+
 class Post < ActiveRecord::Base
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy
@@ -6,6 +8,7 @@ class Post < ActiveRecord::Base
 
   auto_html_for :content do
     html_escape
+    quote
     youtube
     link :target => "_blank", :rel => "nofollow"
     simple_format
