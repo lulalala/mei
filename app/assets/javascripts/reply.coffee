@@ -1,3 +1,4 @@
+#= require post_handle
 #= require image_upload
 
 replyContainer = null
@@ -51,3 +52,8 @@ firstPostFromTopic = (topicId, postId)->
   topicEl = $(".topic[data-id=#{topicId}]")
   firstPost = topicEl.find(".post:first-of-type")
   firstPost.data('id') == postId
+
+PostHandle.register ($postEl)->
+  return if $postEl.index() != 1
+  url = $postEl.find('.actions .reply').attr('href')
+  $postEl.find('.actions').prepend(" <a class='permalink' href='#{url}'>Thread Permalink</a>")

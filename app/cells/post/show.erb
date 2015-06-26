@@ -10,7 +10,7 @@
     <%= time_tag @post.created_at %>
     <span class="id">#<%= @post.id %></span>
     <div class="actions">
-      <%= link_to 'Reply', topic_path(@post.topic, anchor:'new_post'), class:'reply' %>
+      <%= link_to 'Reply', topic_path(@post.topic), class:'reply' %>
     </div>
   </header>
   <% @post.images.each do |image| %>
