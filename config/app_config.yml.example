@@ -9,3 +9,9 @@ rails:
 carrierwave:
   watermark:
     font: 'Nimbus-Sans-Bold'
+
+# global board setting
+board:
+  reply_omit_condition:
+    n_recent_only: 5
+    avoid_only_n_hidden: 2

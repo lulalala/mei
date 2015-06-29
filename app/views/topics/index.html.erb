@@ -4,7 +4,7 @@
 </div>
 
 <div class="main">
-  <%= render_cell_collection :topic, :show, @topics %>
+  <%= render_cell_collection :topic, :show, @topics, omit:true %>
   <%= paginate @topics %>
 </div>
 

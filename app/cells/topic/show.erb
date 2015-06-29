@@ -1,5 +1,15 @@
 <section class="topic" data-id="<%= @topic.id %>">
   <h1><%= @topic.title %></h1>
 
-  <%= render_cell_collection :post, :show, @topic.posts.includes(:images) %>
+  <% if @omit %>
+    <% n_recent_post_only = @topic.board.reply_omit_condition.n_recent_only %>
+    <%= render_cell :post, :show, @topic.posts.first %>
+    <span class="notice">
+      <%= @topic.posts.size - 1 - n_recent_post_only %> posts omitted,
+      <%= link_to 'view all', topic_path(@topic) %>
+    </span>
+    <%= render_cell_collection :post, :show, @topic.posts.includes(:images).last(n_recent_post_only) %>
+  <% else %>
+    <%= render_cell_collection :post, :show, @topic.posts.includes(:images) %>
+  <% end %>
 </section>

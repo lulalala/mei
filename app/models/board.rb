@@ -8,4 +8,10 @@ class Board < ActiveRecord::Base
   def to_param
     seo_name
   end
+
+  # Reply Omittion
+
+  def reply_omit_condition
+    AppConfig.board.reply_omit_condition
+  end
 end
