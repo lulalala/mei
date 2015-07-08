@@ -6,7 +6,7 @@
     <%= render_cell :post, :show, @topic.posts.first %>
     <span class="notice">
       <%= @topic.posts.size - 1 - n_recent_post_only %> posts omitted,
-      <%= link_to 'view all', topic_path(@topic) %>
+      <%= link_to 'view all', topic_path(@topic), data:{behavior:'view-omitted'} %>
     </span>
     <%= render_cell_collection :post, :show, @topic.posts.includes(:images).last(n_recent_post_only) %>
   <% else %>

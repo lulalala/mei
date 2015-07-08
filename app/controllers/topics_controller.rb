@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :destroy]
+  before_action :set_topic, only: [:show, :omitted, :destroy]
 
   # GET /topics
   def index
@@ -16,6 +16,11 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
     end
+  end
+
+  # GET /topics/1/omitted
+  def omitted
+    render layout:false
   end
 
 private

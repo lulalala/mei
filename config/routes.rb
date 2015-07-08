@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   scope '/:board' do
     get '/' => 'topics#index', as: :board
-    resources :topics, only:[:show]
+    resources :topics, only:[:show] do
+      member do
+        get :omitted
+      end
+    end
     resources :posts, only:[:create, :new]
   end
 
