@@ -13,7 +13,8 @@ class Topic < ActiveRecord::Base
     now = Time.now
     update_columns(
       updated_at: now,
-      bumped_at: now
+      bumped_at: now,
+      max_pos: max_pos + 1
     )
   end
 end

@@ -1,4 +1,4 @@
-<article class="post" data-id="<%= @post.id %>">
+<article class="post" data-pos="<%= @post.pos %>">
   <header class="info">
     <% if @post.email %>
       <%= mail_to @post.email do %>
@@ -8,7 +8,7 @@
       <span class="author"><%= @post.author %></span>
     <% end %>
     <%= time_tag @post.created_at %>
-    <span class="id">#<%= @post.id %></span>
+    <span class="id">#<%= @post.pos %></span>
     <div class="actions">
       <%= link_to 'Reply', topic_path(@post.topic), class:'reply' %>
     </div>

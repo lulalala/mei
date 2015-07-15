@@ -21,7 +21,12 @@ class Post < ActiveRecord::Base
     end
   end
 
-  after_save :bump_topic
+  before_create :set_pos
+  def set_pos
+    self.pos = topic.max_pos + 1
+  end
+
+  after_create :bump_topic
   def bump_topic
     topic.bump
   end
