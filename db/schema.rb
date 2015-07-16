@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 20150530134256) do
 
   add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
 
-  create_table "key_values", force: :cascade, comment: "Key-value store for global information" do |t|
-    t.string "key",   limit: 255,   null: false, comment: "variable name"
-    t.text   "value", limit: 65535,              comment: "variable value"
-  end
-
-  add_index "key_values", ["key"], name: "index_key_values_on_key", unique: true, using: :btree
-
   create_table "posts", force: :cascade, comment: "text content posted. New post or reply comments are all posts." do |t|
     t.text     "content",      limit: 65535,              comment: "text content"
     t.string   "author",       limit: 255,                comment: "author name"
