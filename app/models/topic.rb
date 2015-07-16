@@ -8,4 +8,12 @@ class Topic < ActiveRecord::Base
   def set_bumped_at
     self.bumped_at = Time.now
   end
+
+  def bump
+    now = Time.now
+    update_columns(
+      updated_at: now,
+      bumped_at: now
+    )
+  end
 end

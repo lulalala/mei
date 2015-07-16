@@ -23,9 +23,6 @@ class Post < ActiveRecord::Base
 
   after_save :bump_topic
   def bump_topic
-    now = Time.now
-    changes = {updated_at:now}
-    changes[:bumped_at] = now
-    topic.update_columns(changes)
+    topic.bump
   end
 end
