@@ -3,13 +3,13 @@
 
   <% if @omit %>
     <% n_recent_post_only = @topic.board.reply_omit_condition.n_recent_only %>
-    <%= render_cell :post, :show, @topic.posts.first %>
+    <%= render_cell :post, :show, @posts.first %>
     <span class="notice">
-      <%= @topic.posts.size - 1 - n_recent_post_only %> posts omitted,
+      <%= @posts.size - 1 - n_recent_post_only %> posts omitted,
       <%= link_to 'view all', topic_path(@topic), data:{behavior:'view-omitted'} %>
     </span>
-    <%= render_cell_collection :post, :show, @topic.posts.includes(:images).last(n_recent_post_only) %>
+    <%= render_cell_collection :post, :show, @posts.last(n_recent_post_only) %>
   <% else %>
-    <%= render_cell_collection :post, :show, @topic.posts.includes(:images) %>
+    <%= render_cell_collection :post, :show, @posts %>
   <% end %>
 </section>

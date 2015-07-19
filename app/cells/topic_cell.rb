@@ -1,6 +1,7 @@
 class TopicCell < Cell::Rails
   def show(topic, omit:false)
     @topic = topic
+    @posts = @topic.posts.order(id: :asc).includes(:images)
     @omit = omit && topic_omittable?(topic)
 
     render
@@ -12,7 +13,7 @@ class TopicCell < Cell::Rails
     return if !topic_omittable?(topic)
 
     limit = @topic.posts.size - 1 - @topic.board.reply_omit_condition.n_recent_only
-    @posts = @topic.posts.includes(:images).offset(1).limit(limit)
+    @posts = @topic.posts.order(id: :asc).includes(:images).offset(1).limit(limit)
 
     render
   end
