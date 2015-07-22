@@ -9,49 +9,46 @@ $ ->
     e.preventDefault()
 
     topicId = $(e.delegateTarget).data('id')
-    postId = $(e.target).parents('.post').data('id')
+    pos = $(e.target).parents('.post').data('pos')
 
     replyContainer = $('#reply-container')
 
     if replyContainer.length
       textArea = replyContainer.find('textarea')
       if currentTopicId == topicId
-        if ! firstPostFromTopic(topicId, postId)
-          insertPostId(textArea, postId)
-      else
-        if textArea.value == '' || confirm('You are about to switch thread which would cause currently unsaved reply to be cleared. Continue?')
-          # clear current form
-          replyContainer.remove()
-          replyContainer = [] # empty
+        if pos == 1
+          textArea.focus()
+        else
+          insertRef(textArea, pos)
+      else if textArea.val() == '' || confirm('You are about to switch thread which would cause currently unsaved reply to be cleared. Continue?')
+        # clear current form
+        replyContainer.remove()
+        replyContainer = [] # empty
 
     # load form if none exists
     if ! replyContainer.length
-      loadReplyForm(prepareUrl(e.target.getAttribute('href')), topicId, postId)
+      loadReplyForm(prepareUrl(e.target.getAttribute('href')), topicId, pos)
 
-insertPostId = (textarea, postId)->
+# quote reference to post in textarea
+insertRef = (textarea, ref)->
   t = textarea.val()
   if t.length > 0
     t = t + "\n"
-  t = t + "> #{postId}\n"
+  t = t + "> #{ref}\n"
   textarea.val(t).focus()
   textarea[0].scrollTop = textarea[0].scrollHeight
 
-loadReplyForm = (url, topicId, postId)->
+loadReplyForm = (url, topicId, pos)->
   $.get(url, topic_id:topicId).done (html)->
     $('body>footer').before("<div id='reply-container'>" + html + "</div>")
-    if ! firstPostFromTopic(topicId, postId)
-      insertPostId($('#reply-container').find('textarea'), postId)
+    if pos != 1
+      insertRef($('#reply-container').find('textarea'), pos)
     currentTopicId = topicId
 
     new ImageUpload($('#reply-container .file-section'))
 
 prepareUrl = (path)->
   path.replace(/topics.*/, 'posts/new')
-
-firstPostFromTopic = (topicId, postId)->
-  topicEl = $(".topic[data-id=#{topicId}]")
-  firstPost = topicEl.find(".post:first-of-type")
-  firstPost.data('id') == postId
 
 PostHandle.register ($postEl)->
   return if $postEl.index() != 1
