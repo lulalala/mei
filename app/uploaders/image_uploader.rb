@@ -34,7 +34,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :remove_animation
-    process :resize_to_fit => [250, 250]
+    process :resize_to_height => 250
     process :watermark
   end
 
@@ -63,6 +63,15 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def get_extension
     FastImage.type(file.to_file)
+  end
+
+  # Resize if height is bigger than specified height
+  def resize_to_height(height)
+    manipulate! do |img|
+      img.resize "x#{height}>"
+      img = yield(img) if block_given?
+      img
+    end
   end
 
   def watermark
