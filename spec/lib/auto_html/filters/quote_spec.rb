@@ -9,6 +9,7 @@ describe 'auto_html quote filter' do
 > One
 >two
 three
+four
 SOURCE
 
     result = auto_html(source){ quote }
@@ -16,6 +17,7 @@ SOURCE
 <quote>> One</quote>
 <quote>>two</quote>
 three
+four
 OUTPUT
   end
 end
