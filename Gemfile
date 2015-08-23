@@ -84,5 +84,6 @@ group :test, :darwin do
   gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'guard-rspec', '~> 4.5.2'
   gem 'rb-fsevent', '~> 0.9.5'
+  gem 'factory_girl_rails', '~> 4.5.0'
 end
 
