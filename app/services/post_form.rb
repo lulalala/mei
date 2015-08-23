@@ -74,6 +74,7 @@ class PostForm
 
   def valid?
     validity = true
+    errors.clear
     [post, topic].each do |object|
       if !object.valid?
         validity = false
