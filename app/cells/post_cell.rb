@@ -3,6 +3,7 @@ class PostCell < Cell::Rails
 
   def show(post)
     @post = post
+    @board = @post.topic.board
     render
   end
 

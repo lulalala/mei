@@ -4,8 +4,8 @@ class Board < ActiveRecord::Base
   serialize :config
   def config
     @cascaded_config ||= AppConfig.board.dup.tap do |c|
-      if super
-        c.merge!(super)
+      if board_config = super
+        c.merge!(board_config)
       end
     end
   end
