@@ -2,6 +2,13 @@ class Board < ActiveRecord::Base
   has_many :topics, inverse_of: :board
 
   serialize :config
+  def config
+    @cascaded_config ||= AppConfig.board.dup.tap do |c|
+      if super
+        c.merge!(super)
+      end
+    end
+  end
 
   acts_as_cached(version:1, expires_in:1.day)
 
