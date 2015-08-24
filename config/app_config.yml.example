@@ -16,3 +16,5 @@ board:
     n_recent_only: 5
     avoid_only_n_hidden: 2
   time_format: '%d %b %H:%M'
+  pagination:
+    per_page: 5

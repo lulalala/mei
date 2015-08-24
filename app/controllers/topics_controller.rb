@@ -3,7 +3,9 @@ class TopicsController < ApplicationController
 
   # GET /topics
   def index
-    @topics = @board.topics.order(bumped_at: :desc).page(params[:page]).per(5)
+    @topics = @board.topics.order(bumped_at: :desc).
+      page(params[:page]).
+      per(@board.config.pagination.per_page)
   end
 
   # GET /topics/1
