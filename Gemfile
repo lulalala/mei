@@ -66,6 +66,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-js-cookie'
 end
 
+gem 'sucker_punch', '~> 1.5.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

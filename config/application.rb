@@ -29,5 +29,7 @@ module Mei
       'X-XSS-Protection' => '1; mode=block',
       'X-Content-Type-Options' => 'nosniff'
     }
+
+    config.active_job.queue_adapter = :sucker_punch
   end
 end
