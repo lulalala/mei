@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 describe PostForm do
+  let(:board){ FactoryGirl.create(:board) }
+
   let(:params){
     ActionController::Parameters.new(
-      board_id: 1,
+      board_id: board.id,
       content: "hi"
     )
   }
@@ -47,7 +49,7 @@ describe PostForm do
     context "post is invalid" do
       let(:params){
         ActionController::Parameters.new(
-          board_id: 1,
+          board_id: board.id,
           content: "" # cause invalid
         )
       }
