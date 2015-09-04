@@ -24,5 +24,10 @@ module Mei
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_dispatch.default_headers = {
+      'X-XSS-Protection' => '1; mode=block',
+      'X-Content-Type-Options' => 'nosniff'
+    }
   end
 end
