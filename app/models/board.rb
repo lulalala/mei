@@ -1,7 +1,7 @@
 class Board < ActiveRecord::Base
   has_many :topics, inverse_of: :board
 
-  serialize :config
+  serialize :config, BoardConfigSerializer
   def config
     @cascaded_config ||= AppConfig.board.dup.tap do |c|
       if board_config = super
