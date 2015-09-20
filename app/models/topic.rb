@@ -9,6 +9,11 @@ class Topic < ActiveRecord::Base
     self.bumped_at = Time.now
   end
 
+  after_commit :queue_after_commit_callback, on: :create
+  def queue_after_commit_callback
+    TopicCallbackJob.perform_later self
+  end
+
   def bump
     now = Time.now
     update_columns(
