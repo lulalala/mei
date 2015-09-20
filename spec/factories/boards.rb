@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :board do
-    name 'i'
-    seo_name 'i'
+    sequence(:name){|n| "Board #{n}" }
+    sequence(:seo_name){|n| "board#{n}" }
   end
 end
