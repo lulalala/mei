@@ -18,3 +18,9 @@ board:
   time_format: '%d %b %H:%M'
   pagination:
     per_page: 5
+    max_page: 9
+  prune:
+    selector_class: SortSelector
+    selector_options:
+    remover_class: DestroyRemover
+    remover_options:
