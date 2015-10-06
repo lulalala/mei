@@ -3,7 +3,7 @@ class PostForm
 
   attr_accessor :topic, :post
   delegate :title, :board_id, to: :topic
-  delegate :author, :content, :email, :topic_id, :images, :images_attributes=, to: :post
+  delegate :author, :content, :options_raw, :topic_id, :images, :images_attributes=, to: :post
 
   # To be called right after new().
   # For rendering empty form.
@@ -104,7 +104,7 @@ class PostForm
   end
 
   def post_params(params)
-    params.permit(:author, :content, :email, :topic_id)
+    params.permit(:author, :content, :options_raw, :topic_id)
   end
 
   def image_params(params)

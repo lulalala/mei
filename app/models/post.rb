@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy
 
+  serialize :options, Array
+
   nilify_blanks
 
   auto_html_for :content do
