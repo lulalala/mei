@@ -16,11 +16,21 @@ class Post < ActiveRecord::Base
     simple_format
   end
 
+  delegate :board, to: :topic
+
   validate :validate_content
   def validate_content
     if images.blank? && content.blank?
       errors.add(:base, 'Image or content is required')
     end
+  end
+
+  def options_raw=(value)
+    super
+
+    analyzer = RawOptionsAnalyzer.new(options_raw, board.config.post.allowed_options)
+    self.email = analyzer.email
+    self.options = analyzer.options
   end
 
   before_create :set_pos
