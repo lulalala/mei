@@ -44,6 +44,11 @@ class Post < ActiveRecord::Base
     topic.bump
   end
 
+  after_create :increment_topic_pos
+  def increment_topic_pos
+    topic.increment_pos
+  end
+
 private
 
   # Load post option modules to object's eigenclass.

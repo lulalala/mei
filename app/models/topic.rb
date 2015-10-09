@@ -19,6 +19,11 @@ class Topic < ActiveRecord::Base
     update_columns(
       updated_at: now,
       bumped_at: now,
+    )
+  end
+
+  def increment_pos
+    update_columns(
       max_pos: max_pos + 1
     )
   end
