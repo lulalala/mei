@@ -31,6 +31,7 @@ class Post < ActiveRecord::Base
     analyzer = RawOptionsAnalyzer.new(options_raw, board.config.post.allowed_options)
     self.email = analyzer.email
     self.options = analyzer.options
+    extend_options
   end
 
   before_create :set_pos
@@ -41,5 +42,16 @@ class Post < ActiveRecord::Base
   after_create :bump_topic
   def bump_topic
     topic.bump
+  end
+
+private
+
+  # Load post option modules to object's eigenclass.
+  # This extends single object instance.
+  def extend_options
+    options.each do |option|
+      klass = Post::Extension.const_get(option.camelize)
+      self.extend klass
+    end
   end
 end
