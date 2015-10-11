@@ -1,7 +1,7 @@
 <article class="post" data-pos="<%= @post.pos %>">
   <header class="info">
-    <% if @post.email %>
-      <%= mail_to @post.email do %>
+    <% if @post.options_raw %>
+      <%= mail_to @post.options_raw do %>
         <span class="author"><%= @post.author || "anonymous" %></span>
       <% end %>
     <% else %>

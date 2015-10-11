@@ -86,5 +86,6 @@ group :test, :darwin do
   gem 'guard-rspec', '~> 4.5.2'
   gem 'rb-fsevent', '~> 0.9.5'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'timecop', '~> 0.8.0'
 end
 

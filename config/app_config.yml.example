@@ -24,3 +24,6 @@ board:
     selector_options:
     remover_class: DestroyRemover
     remover_options:
+  post:
+    allowed_options:
+      - sage

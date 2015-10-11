@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715151825) do
+ActiveRecord::Schema.define(version: 20151006130931) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150715151825) do
   create_table "posts", force: :cascade, comment: "text content posted. New post or reply comments are all posts." do |t|
     t.text     "content",      limit: 65535,              comment: "text content"
     t.string   "author",       limit: 255,                comment: "author name"
+    t.string   "options",      limit: 255,                comment: "array of options like sage"
+    t.string   "options_raw",  limit: 255,                comment: "user input for email and options"
     t.string   "email",        limit: 255,                comment: "email"
     t.integer  "topic_id",     limit: 4,     null: false
     t.integer  "pos",          limit: 2,     null: false, comment: "position of post within topic"
