@@ -1,8 +1,13 @@
+@import init
+
 *
   box-sizing: border-box
 
 body
   margin: 1em
+
+  @media screen and (max-width: $tablet-large)
+    margin: $small-screen-body-margin
 
 .header>form
   max-width: 600px

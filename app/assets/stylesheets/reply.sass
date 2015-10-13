@@ -1,3 +1,5 @@
+@import init
+
 div#reply-container
   right: 0
   top: 4em
@@ -8,6 +10,15 @@ div#reply-container
 
   background: #fff
   border: 1px solid #ccc
+
+  @media screen and (max-width: $tablet-small)
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+
+  @media screen and (max-width: $tablet-large) and (min-width: $tablet-small)
+    width: 60%
 
   textarea
     height: 10em
