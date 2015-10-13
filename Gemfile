@@ -52,6 +52,8 @@ gem 'settingslogic', '~> 2.0'
 
 gem 'unobtrusive_flash', '~> 3.1.0'
 
+# SEO
+gem 'meta-tags', '~> 2.1.0'
 gem 'sitemap_generator', '~> 5.0.5'
 
 # Image

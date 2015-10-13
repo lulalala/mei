@@ -1,3 +1,10 @@
+<%
+    set_meta_tags title: [@topic.title, "#{@board.seo_name}##{@topic.id}"],
+    og: {
+      image: @topic
+    }
+%>
+
 <div class="header">
   <%= render_cell :post, :form, @topic %>
   <%= render_custom_partial :after_form %>
