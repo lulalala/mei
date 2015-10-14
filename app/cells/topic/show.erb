@@ -1,5 +1,5 @@
 <section class="topic" data-id="<%= @topic.id %>">
-  <h1><%= @topic.title %></h1>
+  <h1 class="break-word"><%= @topic.title %></h1>
 
   <% if @omit %>
     <% n_recent_post_only = @topic.board.reply_omit_condition.n_recent_only %>
