@@ -1,3 +1,5 @@
+@import init
+
 article.post
   width: auto
   min-width: 500px // TODO mobile incompatible
@@ -7,6 +9,12 @@ article.post
   margin-left: 1em
   margin-bottom: 0.5em
   background-color: #F0E0D6
+
+  @media screen and (max-width: $tablet-large)
+    width: 100%
+    min-width: initial
+    margin-left: 0
+    padding: $small-screen-body-margin
 
   &:first-of-type
     background-color: inherit
@@ -23,14 +31,15 @@ article.post
 
   a.img
     float: left
+    margin-right: 1em
 
   a.img, img.full
-    margin-right: 1em
     margin-bottom: 0.5em
 
   img.full
     max-width: 100%
     max-height: auto
+    margin-right: 0
 
   &.full
     display: block
@@ -38,3 +47,9 @@ article.post
     a.img
       float: none
       display: block
+
+  @media screen and (max-width: 600px)
+    .video.youtube
+      iframe
+        max-width: 100%
+
