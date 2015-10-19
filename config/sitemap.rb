@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = AppConfig.domain()
+SitemapGenerator::Sitemap.default_host = AppConfig.host()
 
 SitemapGenerator::Sitemap.create include_root:false do
   Board.find_each do |board|
