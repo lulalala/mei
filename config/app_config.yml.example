@@ -30,3 +30,5 @@ board:
   post:
     allowed_options:
       - sage
+  seo:
+    image: null

@@ -1,3 +1,14 @@
+<% content_for :head do
+  title = [@board.name, "Page #{current_page}"].join(" - ")
+%>
+  <title><%= title %></title>
+  <%= tag(:link, property:'canonical', content:board_url(@board)) %>
+  <%= tag(:meta, property:'og:title', content:title) %>
+  <%= tag(:meta, property:'og:type', content:'website') %>
+  <%= tag(:meta, property:'og:url', content:board_url(@board)) %>
+  <%= @board.decorator.og_image_tag %>
+<% end %>
+
 <div class="header">
   <%= render_cell(:post, :form, @board.topics.build) %>
   <%= render_custom_partial :after_form %>
