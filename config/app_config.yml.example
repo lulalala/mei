@@ -1,8 +1,11 @@
-domain_setting:
-  :protocol: 'http'
-  :subdomain: null
-  :domain: ''
-  :port: null
+hosts:
+  default: &default_host
+    :protocol: 'http'
+    :subdomain: null
+    :domain: ''
+    :port: null
+  asset:
+    <<: *default_host
 rails:
   secret_token: ''
   secret_key_base: ''
@@ -27,3 +30,5 @@ board:
   post:
     allowed_options:
       - sage
+  seo:
+    image: null

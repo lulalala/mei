@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/lulalala/active_decorator.git
+  revision: 8b12c88550577d50518a2aa8a48fadbfefa367a9
+  branch: decorator-as-class
+  specs:
+    active_decorator (0.5.3)
+
+GIT
   remote: git://github.com/lulalala/jquery-rails.git
   revision: b6022d70a6e9398ff05715f8ebbcedd3611300b2
   specs:
@@ -277,6 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_decorator!
   auto_html (~> 1.6.4)
   bundler (>= 1.8.4)
   byebug

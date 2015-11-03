@@ -2,10 +2,16 @@ require 'settingslogic'
 class AppConfig < Settingslogic
   source File.dirname(__FILE__) << "/app_config.yml"
 
-  # returns domain string
-  # pass in false for segment key to hide that segment, e.g. `protocol:false`
-  def self.domain(params = {})
-    default_params = self.get('domain_setting').to_hash
+  # For computing the a string for host settings. There can be multiple host settings such as asset host.
+  # @params [String, Symbol] server name of host
+  # @params [Hash] params segment key-values to override default. A false value can hide that segment.
+  # @option params [String, false] :protocol
+  # @option params [String, false] :subdomain
+  # @option params [String, false] :domain
+  # @option params [Integer, false] :port
+  # @returns [String] host domain
+  def self.host(server = :default, params = {})
+    default_params = self.get("hosts.#{server}").to_hash
     params = default_params.merge(params)
 
     url = ''

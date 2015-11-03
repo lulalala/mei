@@ -19,4 +19,8 @@ module ApplicationHelper
 
     render_cell(:view_fragment, :show, @board, name)
   end
+
+  def current_page
+    params[:page] || 1
+  end
 end
