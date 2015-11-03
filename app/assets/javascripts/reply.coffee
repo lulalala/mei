@@ -12,6 +12,7 @@ $ ->
     pos = $(e.target).parents('.post').data('pos')
 
     replyContainer = $('#reply-container')
+    replyContainer.show()
 
     if replyContainer.length
       textArea = replyContainer.find('textarea')
@@ -46,6 +47,13 @@ loadReplyForm = (url, topicId, pos)->
     currentTopicId = topicId
 
     new ImageUpload($('#reply-container .file-section'))
+
+    prepareHideLink()
+
+prepareHideLink = () ->
+  replyContainer = $('#reply-container')
+  replyContainer.find(".actions a.hide-link").click ->
+    replyContainer.hide()
 
 prepareUrl = (path)->
   path.replace(/topics.*/, 'posts/new')

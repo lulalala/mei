@@ -40,7 +40,8 @@ class PostsController < ApplicationController
     elsif params[:post_id]
       @topic = Topic.joins(:posts).find_by('posts.id' => params[:post_id])
     end
-    render html:render_cell(:post, :form, @topic)
+
+    render layout:false
   end
 
   # DELETE /posts/1
