@@ -6,7 +6,7 @@
   <%= tag(:meta, property:'og:title', content:title) %>
   <%= tag(:meta, property:'og:type', content:'website') %>
   <%= tag(:meta, property:'og:url', content:board_url(@board)) %>
-  <%= @board.decorator.og_image_tag %>
+  <%= @board.presenter.og_image_tag %>
 <% end %>
 
 <div class="header">

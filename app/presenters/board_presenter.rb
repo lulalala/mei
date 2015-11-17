@@ -1,4 +1,4 @@
-class BoardDecorator < ActiveDecorator::BaseDecorator
+class BoardPresenter < LulalalaPresenter::Base
   def representative_image_url
     model.config.seo.image
   end

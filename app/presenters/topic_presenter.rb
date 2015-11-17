@@ -1,4 +1,4 @@
-class TopicDecorator < ActiveDecorator::BaseDecorator
+class TopicPresenter < LulalalaPresenter::Base
   def title
     if model.title.present?
       h.truncate(model.title, length: 50)

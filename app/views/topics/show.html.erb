@@ -1,12 +1,12 @@
 <% content_for :head do
-  title = [@topic.decorator.title, @board.name].join(" - ")
+  title = [@topic.presenter.title, @board.name].join(" - ")
 %>
   <title><%= title %></title>
   <%= tag(:link, property:'canonical', content:topic_url(@topic)) %>
   <%= tag(:meta, property:'og:title', content:title) %>
   <%= tag(:meta, property:'og:type', content:'website') %>
   <%= tag(:meta, property:'og:url', content:topic_url(@topic)) %>
-  <%= @topic.decorator.og_image_tag %>
+  <%= @topic.presenter.og_image_tag %>
 <% end %>
 
 <div class="header">

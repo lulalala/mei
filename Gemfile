@@ -38,7 +38,7 @@ gem 'cells', '~> 3.11.3'
 gem 'cells-collection', '~> 0.0.2'
 gem 'kaminari', '~> 0.16'
 gem 'auto_html', '~> 1.6.4'
-gem 'active_decorator', github:'lulalala/active_decorator', branch:'decorator-as-class'
+gem 'lulalala_presenter', "~> 0.0.1"
 
 gem 'squeel', '~> 1.2'
 gem 'nilify_blanks', '~> 1.2.1'

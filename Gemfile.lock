@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/lulalala/active_decorator.git
-  revision: 8b12c88550577d50518a2aa8a48fadbfefa367a9
-  branch: decorator-as-class
-  specs:
-    active_decorator (0.5.3)
-
-GIT
   remote: git://github.com/lulalala/jquery-rails.git
   revision: b6022d70a6e9398ff05715f8ebbcedd3611300b2
   specs:
@@ -134,6 +127,7 @@ GEM
       rb-inotify (>= 0.9)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
+    lulalala_presenter (0.0.1)
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -284,7 +278,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_decorator!
   auto_html (~> 1.6.4)
   bundler (>= 1.8.4)
   byebug
@@ -300,6 +293,7 @@ DEPENDENCIES
   jquery-rails-cdn (~> 1.0.3)
   jquery-turbolinks (~> 2.1.0)
   kaminari (~> 0.16)
+  lulalala_presenter (~> 0.0.1)
   migration_comments (~> 0.3)
   mini_magick (~> 4.2.7)
   mysql2 (~> 0.3.18)
