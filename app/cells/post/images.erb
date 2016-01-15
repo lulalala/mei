@@ -1,0 +1,5 @@
+<% @images.each do |image| %>
+  <%= link_to image_url(image.image.url), class:'img' do %>
+    <%= image_tag image_url(image.image.thumb.url) %>
+  <% end %>
+<% end %>

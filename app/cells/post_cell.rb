@@ -16,4 +16,9 @@ class PostCell < Cell::Rails
     @form_field = form_field
     render
   end
+
+  def images(post)
+    @images = post.images
+    render if @images.size > 0
+  end
 end
