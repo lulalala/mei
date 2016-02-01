@@ -29,24 +29,26 @@ article.post
   quote
     color: #789922
 
+  // Images
+
   a.img
     float: left
     margin-right: 1em
-
-  a.img, img.full
     margin-bottom: 0.5em
 
   img.full
     max-width: 100%
     max-height: auto
-    margin-right: 0
+    margin-bottom: 0.5em
+    cursor: pointer
+    display: block
 
   &.full
     display: block
 
     a.img
       float: none
-      display: block
+      display: inline-block
 
   @media screen and (max-width: 600px)
     .video.youtube
