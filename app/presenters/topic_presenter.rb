@@ -14,7 +14,7 @@ class TopicPresenter < LulalalaPresenter::Base
     if image = post.images.first
       image.image.url
     else
-      model.board.decorator.representative_image_url
+      model.board.presenter.representative_image_url
     end
   end
 
