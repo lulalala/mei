@@ -4,6 +4,12 @@ class Post < ActiveRecord::Base
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy
 
+  # Replies
+  has_many :links_as_parent, foreign_key: :ancestor_id, class_name:'Reply'
+  has_many :links_as_child, foreign_key: :descendant_id, class_name:'Reply'
+  has_many :parents, through: :links_as_child, source: :ancestor
+  has_many :children, through: :links_as_parent, source: :descendant
+
   serialize :options, Array
 
   nilify_blanks
@@ -58,5 +64,12 @@ private
       klass = Post::Extension.const_get(option.camelize)
       self.extend klass
     end
+  end
+
+  before_save :assign_reply
+  REPLY_PATTERN = /^ *> ?(\d+)/
+  def assign_reply
+    pos_array = content.scan(REPLY_PATTERN).map(&:first)
+    self.parents += Post.where(topic_id: topic_id, pos: pos_array)
   end
 end

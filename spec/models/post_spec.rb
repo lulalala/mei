@@ -16,4 +16,21 @@ RSpec.describe Post, type: :model do
       expect(subject.options.empty?).to eq(true)
     end
   end
+
+  describe 'reply' do
+    let!(:board) { FactoryGirl.create(:board) }
+    let!(:topic) { FactoryGirl.create(:topic, board:board)}
+    let!(:post1) { FactoryGirl.create(:post, topic:topic, content:'first post')}
+
+    it do
+      post2 = Post.create(topic: topic, content: "> 1 foo")
+      post3 = Post.create(topic: topic, content: "> 1\n > 2 bar")
+
+      expect(post2.parents).to contain_exactly(post1)
+      expect(post3.parents).to contain_exactly(post1, post2)
+
+      expect(post1.children).to contain_exactly(post2, post3)
+      expect(post2.children).to contain_exactly(post3)
+    end
+  end
 end
