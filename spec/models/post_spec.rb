@@ -32,5 +32,21 @@ RSpec.describe Post, type: :model do
       expect(post1.children).to contain_exactly(post2, post3)
       expect(post2.children).to contain_exactly(post3)
     end
+
+    describe '#turn_reply_to_link' do
+      it "convert reference to link" do
+        post2 = Post.create(topic: topic, content: "> 1 foo")
+
+        expect(post2.content_html).to include(%{<a href="/#{board.seo_name}/topics/#{topic.id}##{post1.presenter.dom_id}">&gt; 1</a> foo})
+
+        # test for position over 10
+        topic.update_column(:max_pos, 42)
+        post2.update_column(:pos, 42)
+
+        post3 = Post.create(topic: topic, content: "> 42 foo")
+
+        expect(post3.content_html).to include(%{<a href="/#{board.seo_name}/topics/#{topic.id}##{post2.presenter.dom_id}">&gt; 42</a> foo})
+      end
+    end
   end
 end

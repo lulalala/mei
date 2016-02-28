@@ -67,9 +67,27 @@ private
   end
 
   before_save :assign_reply
-  REPLY_PATTERN = /^ *> ?(\d+)/
+  REPLY_PATTERN = /(\&gt; ?(\d+))/
   def assign_reply
-    pos_array = content.scan(REPLY_PATTERN).map(&:first)
+    pos_array = content_html.scan(REPLY_PATTERN).map{|m| m[1]}
     self.parents += Post.where(topic_id: topic_id, pos: pos_array)
+  end
+
+  before_save :turn_reply_to_link
+  def turn_reply_to_link
+    self.content_html = content_html.gsub(REPLY_PATTERN) do |match|
+      pos = match[/\d+/].to_i
+      r = parents.find {|parent| parent.pos == pos}
+      if r
+        url = Rails.application.routes.url_helpers.topic_path(
+          board: r.topic.board,
+          id: r.topic_id,
+          anchor: r.presenter.dom_id
+        )
+        ActionController::Base.helpers.link_to("> #{r.pos}", url)
+      else
+        match
+      end
+    end
   end
 end
