@@ -69,12 +69,16 @@ private
   before_save :assign_reply
   REPLY_PATTERN = /(\&gt; ?(\d+))/
   def assign_reply
+    return if content_html.blank?
+
     pos_array = content_html.scan(REPLY_PATTERN).map{|m| m[1]}
     self.parents += Post.where(topic_id: topic_id, pos: pos_array)
   end
 
   before_save :turn_reply_to_link
   def turn_reply_to_link
+    return if content_html.blank?
+
     self.content_html = content_html.gsub(REPLY_PATTERN) do |match|
       pos = match[/\d+/].to_i
       r = parents.find {|parent| parent.pos == pos}
