@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006130931) do
+ActiveRecord::Schema.define(version: 20160217154121) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -47,6 +47,11 @@ ActiveRecord::Schema.define(version: 20151006130931) do
 
   add_index "posts", ["topic_id", "pos"], name: "index_posts_on_topic_id_and_pos", unique: true, using: :btree
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
+
+  create_table "replies", force: :cascade, comment: "replying relations between posts" do |t|
+    t.integer "ancestor_id",   limit: 4, comment: "post that is being replied to"
+    t.integer "descendant_id", limit: 4, comment: "post that is the reply"
+  end
 
   create_table "topics", force: :cascade, comment: "topic of discussion, also called thread" do |t|
     t.string   "title",      limit: 255,                          comment: "title"

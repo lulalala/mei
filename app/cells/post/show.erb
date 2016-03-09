@@ -1,4 +1,4 @@
-<article class="post" data-pos="<%= @post.pos %>">
+<article class="post" id="<%= @post.presenter.dom_id %>" data-pos="<%= @post.pos %>">
   <header class="info">
     <% if @post.options_raw %>
       <%= mail_to @post.options_raw do %>
@@ -17,4 +17,12 @@
   <div class="content break-word">
     <%= @post.content_html %>
   </div>
+  <% if @post.children.exists? %>
+    <div class="reply">
+      replied by:
+      <% @post.children.each do |r| %>
+        <%= link_to "> #{r.pos}", topic_path(@post.topic, anchor:r.presenter.dom_id) %>
+      <% end %>
+    </div>
+  <% end %>
 </article>

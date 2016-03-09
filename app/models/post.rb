@@ -4,6 +4,12 @@ class Post < ActiveRecord::Base
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy
 
+  # Replies
+  has_many :links_as_parent, foreign_key: :ancestor_id, class_name:'Reply'
+  has_many :links_as_child, foreign_key: :descendant_id, class_name:'Reply'
+  has_many :parents, through: :links_as_child, source: :ancestor
+  has_many :children, through: :links_as_parent, source: :descendant
+
   serialize :options, Array
 
   nilify_blanks
@@ -57,6 +63,35 @@ private
     options.each do |option|
       klass = Post::Extension.const_get(option.camelize)
       self.extend klass
+    end
+  end
+
+  before_save :assign_reply
+  REPLY_PATTERN = /(\&gt; ?(\d+))/
+  def assign_reply
+    return if content_html.blank?
+
+    pos_array = content_html.scan(REPLY_PATTERN).map{|m| m[1]}
+    self.parents += Post.where(topic_id: topic_id, pos: pos_array)
+  end
+
+  before_save :turn_reply_to_link
+  def turn_reply_to_link
+    return if content_html.blank?
+
+    self.content_html = content_html.gsub(REPLY_PATTERN) do |match|
+      pos = match[/\d+/].to_i
+      r = parents.find {|parent| parent.pos == pos}
+      if r
+        url = Rails.application.routes.url_helpers.topic_path(
+          board: r.topic.board,
+          id: r.topic_id,
+          anchor: r.presenter.dom_id
+        )
+        ActionController::Base.helpers.link_to("> #{r.pos}", url)
+      else
+        match
+      end
     end
   end
 end

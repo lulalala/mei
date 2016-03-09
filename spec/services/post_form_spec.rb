@@ -23,6 +23,28 @@ describe PostForm do
         subject.topic.persisted?.should == true
       end
     end
+
+    context "opening new thread with image only" do
+      let(:file){
+        Rack::Test::UploadedFile.new(File.join(ActionController::TestCase.fixture_path, 'files/sample.jpg'), 'image/jpeg')
+      }
+      let(:params){
+        ActionController::Parameters.new(
+          board_id: board.id,
+          images_attributes:{
+            "1": {image:[file]}
+          }
+        )
+      }
+
+      it "saves post with topic" do
+        subject.save
+
+        subject.post.persisted?.should == true
+        subject.post.images.size.should == 1
+        subject.topic.persisted?.should == true
+      end
+    end
   end
 
   describe "#new_topic?" do
