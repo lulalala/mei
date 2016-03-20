@@ -10,9 +10,11 @@ class Image < ActiveRecord::Base
     end
   end
 
-  # Check file type and size before Carrierwave fetches it.
-  # Store invalid reason for Rails validation later on.
   def remote_image_url=(url)
+    self.remote_url = url
+
+    # Check file type and size before Carrierwave fetches it.
+    # Store invalid reason for Rails validation later on.
     checker = FastImage.new(url)
     @invalid_reason = nil
 
