@@ -1,7 +1,5 @@
 <div class="images <%= @images.size > 1 ? 'multi' : 'single' %>">
   <% @images.each do |image| %>
-    <%= link_to image_url(image.image.url), class:'img' do %>
-      <%= image_tag image_url(image.image.thumb.url) %>
-    <% end %>
+    <%= image.presenter.linked_display %>
   <% end %>
 </div>
