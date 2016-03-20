@@ -6,4 +6,10 @@ class ImagePresenter < LulalalaPresenter::Base
       class:'img'
     ).html_safe
   end
+
+  # Linked image in a container which clears floats,
+  # so images will occupy entire row.
+  def cleared_linked_display
+    h.content_tag(:div, linked_display, class:'images single clear').html_safe
+  end
 end
