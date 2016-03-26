@@ -46,7 +46,7 @@ loadReplyForm = (url, topicId, pos)->
       insertRef($('#reply-container').find('textarea'), pos)
     currentTopicId = topicId
 
-    new ImageUpload($('#reply-container .file-section'))
+    new ImageUpload($('#reply-container form'))
 
     prepareHideLink()
 

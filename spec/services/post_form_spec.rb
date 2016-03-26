@@ -31,9 +31,7 @@ describe PostForm do
       let(:params){
         ActionController::Parameters.new(
           board_id: board.id,
-          images_attributes:{
-            "1": {image:[file]}
-          }
+          images: [file]
         )
       }
 

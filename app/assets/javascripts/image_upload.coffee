@@ -1,61 +1,56 @@
 # Image upload control
 
 class @ImageUpload
-  uploadMethod: null
+  uploaded: 0
+  failed: 0
+  waitingForUpload: false
+  # jQuery Object
+  statusLabel: null
 
-  constructor: (@container)->
-    @setupNestedAttributes()
-    @setupSwtiching()
+  # @form must be jQuery object
+  constructor: (@form)->
+    @setupFileInputField()
+    @setupForm()
 
-  setupNestedAttributes: ->
-    @container.nestedAttributes
-      bindAddTo: $(".actions .add")
-      collectionName: 'images'
-      collectIdAttributes: false
-      $clone: @container.children('.field')
+  getInput: ->
+    @form.find('input[data-behavior~="upload"]')
 
-    @container.find('input[type=url]').focus (e)=>
-      @addInput(e.target)
+  setupFileInputField: ->
+    input = @getInput()
 
-    @container.find('input[type=file]').change (e)=>
-      @addInput(e.target)
+    @statusLabel = $('<div class="status"></div>').insertAfter(input)
 
-  addInput: (target)->
-      empty_file_inputs = @container.find("input:enabled.upload[type=#{@uploadMethod}]").not(target).filter (index)->
-        @value.length == 0
+    input.fileupload(dataType: 'json', paramName: "images[]", dropZone: @form.find(".file-section")).bind('fileuploaddone', (e, data) =>
+      for file, index in data.result.images
+        if file.id != null
+          $("<input type='hidden' name='post[image_ids][]' value='#{file.id}' />").insertAfter(@statusLabel)
+          @uploaded += 1
+        else
+          @failed += 1
+    ).bind(
+      'fileuploadadd', @updateStatus
+    ).bind(
+      'fileuploadalways', @updateStatus
+    ).bind(
+      'fileuploadstop', @updateStatus
+    ).bind(
+      'fileuploadstop', @submitForm
+    )
 
-      if empty_file_inputs.length == 0
-        @container.nestedAttributes("add")
+  setupForm: ->
+    @form.on 'ajax:beforeSend', =>
+      if @getInput().fileupload('active') > 0
+        @waitingForUpload = true
+        return false
 
-  setupSwtiching: ->
-    @updateView()
-    @setCurrentUploadMethod()
+  submitForm: (e, data) =>
+    if @waitingForUpload && @getInput().fileupload('active') == 0
+      @waitingForUpload = false
+      @form.submit()
 
-    @container.find('.actions a.switch').click (e)=>
-      e.preventDefault()
-
-      # toggle disable
-      @container.find('.field input.upload').prop 'disabled', (i,v)=>
-        !v
-
-      @updateView()
-      @setCurrentUploadMethod()
-
-  setCurrentUploadMethod: ->
-    if @container.find("input:enabled.upload[type=file]").length
-      @uploadMethod = 'file'
-    else
-      @uploadMethod = 'url'
-
-
-  updateView: ->
-    # visibility
-    @container.find('.field input').each (index, input)=>
-      input = $(input)
-      if input.prop('disabled')
-        input.addClass('hide')
-      else
-        input.removeClass('hide')
+  updateStatus: (e, data) =>
+    @statusLabel.html("#{@getInput().fileupload('active')} uploading, #{@uploaded} uploaded, #{@failed} failed")
 
 $ ->
-  new ImageUpload($('.file-section'))
+  $('form').each ->
+    new ImageUpload($(this))
