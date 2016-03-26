@@ -58,7 +58,6 @@ gem 'sitemap_generator', '~> 5.0.5'
 # Image
 gem 'mini_magick', '~> 4.2.7'
 gem 'carrierwave', '~> 0.10.0'
-gem 'remotipart', '~> 1.2.1'
 gem 'fastimage', '~> 1.7.0'
 
 # Assets
