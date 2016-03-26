@@ -64,6 +64,7 @@ gem 'fastimage', '~> 1.7.0'
 source 'https://rails-assets.org' do
   gem 'rails-assets-js-cookie'
   gem 'rails-assets-normalize.css', '~> 3.0.3'
+  gem 'rails-assets-blueimp-file-upload', '~> 9.12.1'
 end
 
 gem 'sucker_punch', '~> 1.5.1'

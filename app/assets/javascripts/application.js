@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require js-cookie
 //
+// File upload
+//= require blueimp-file-upload/vendor/jquery.ui.widget.js
+//= require blueimp-file-upload/jquery.iframe-transport.js
+//= require blueimp-file-upload/jquery.fileupload.js
+//
 //= require unobtrusive_flash
 //= require unobtrusive_flash_ui
 //
