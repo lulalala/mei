@@ -11,6 +11,9 @@ class @ImageUpload
   constructor: (@form)->
     @setupFileInputField()
     @setupForm()
+    $(document).on("dragenter", ->
+      $('.file-section').addClass('drag-over')
+    )
 
   getInput: ->
     @form.find('input[data-behavior~="upload"]')
