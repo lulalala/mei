@@ -1,13 +1,4 @@
 <div class="file-section">
   <label><%= Post.human_attribute_name(:image) %></label>
-  <div class="actions">
-    <a class="switch url-upload" href="#">switch to url upload</a>
-    <a class="switch normal-upload hide" href="#">switch to normal upload</a>
-  </div>
-  <% @form_field.fields_for :images do |i| %>
-    <div class="field">
-      <%= i.file_field :image, class:'upload', autocomplete:'off', multiple:true %>
-      <%= i.url_field :remote_image_url, placeholder:'http://example.com/guava.png', disabled:true, autocomplete:'off', class:'upload hide' %>
-    </div>
-  <% end %>
+  <%= @form_field.file_field :images, autocomplete:'off', multiple:true, data:{url: images_path, behavior: 'upload'} %>
 </div>

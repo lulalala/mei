@@ -58,13 +58,13 @@ gem 'sitemap_generator', '~> 5.0.5'
 # Image
 gem 'mini_magick', '~> 4.2.7'
 gem 'carrierwave', '~> 0.10.0'
-gem 'remotipart', '~> 1.2.1'
 gem 'fastimage', '~> 1.7.0'
 
 # Assets
 source 'https://rails-assets.org' do
   gem 'rails-assets-js-cookie'
   gem 'rails-assets-normalize.css', '~> 3.0.3'
+  gem 'rails-assets-blueimp-file-upload', '~> 9.12.1'
 end
 
 gem 'sucker_punch', '~> 1.5.1'

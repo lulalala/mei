@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       end
     end
     resources :posts, only:[:create, :new]
+    resources :images, only:[:create]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

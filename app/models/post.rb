@@ -75,6 +75,35 @@ private
     self.parents += Post.where(topic_id: topic_id, pos: pos_array)
   end
 
+  before_save :extract_images
+  def extract_images
+    return if content_html.blank?
+    return if !content_changed?
+
+    content_html_dup = content_html.dup
+
+    content.lines.each do |line|
+      url = URI.extract(line)
+
+      next if url.size != 1
+
+      url = url.first
+      next if (line.sub(url,'').strip).size > 0
+
+      image = images.find_by(remote_image_url: url)
+      if !image
+        image = Image.create(remote_image_url: url)
+        next if !image.valid?
+
+        self.images << image
+      end
+
+      content_html_dup.gsub!(%r{<a.+?#{Regexp.quote(url)}.+?</a>}, image.presenter.cleared_linked_display)
+    end
+
+    self.content_html = content_html_dup
+  end
+
   before_save :turn_reply_to_link
   def turn_reply_to_link
     return if content_html.blank?
