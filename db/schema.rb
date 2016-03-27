@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320083647) do
+ActiveRecord::Schema.define(version: 20160327113357) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -24,11 +24,15 @@ ActiveRecord::Schema.define(version: 20160320083647) do
   add_index "boards", ["seo_name"], name: "index_boards_on_seo_name", unique: true, using: :btree
 
   create_table "images", force: :cascade, comment: "image" do |t|
-    t.integer  "post_id",    limit: 4
-    t.string   "image",      limit: 255,              comment: "filename"
-    t.string   "remote_url", limit: 255,              comment: "url of image fetched from"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "post_id",      limit: 4
+    t.string   "image",        limit: 255,              comment: "filename"
+    t.integer  "width",        limit: 4
+    t.integer  "height",       limit: 4
+    t.integer  "thumb_width",  limit: 4
+    t.integer  "thumb_height", limit: 4
+    t.string   "remote_url",   limit: 255,              comment: "url of image fetched from"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
