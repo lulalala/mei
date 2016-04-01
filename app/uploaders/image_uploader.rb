@@ -36,7 +36,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :remove_animation
     process :resize_to_fit => [250, 250]
     process :watermark
+    process :store_thumb_dimensions
   end
+
+  process :store_dimensions
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -85,6 +88,18 @@ class ImageUploader < CarrierWave::Uploader::Base
         img.collapse!
       end
       img
+    end
+  end
+
+  def store_dimensions
+    if file && model
+      model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
+    end
+  end
+
+  def store_thumb_dimensions
+    if file && model
+      model.thumb_width, model.thumb_height = ::MiniMagick::Image.open(file.file)[:dimensions]
     end
   end
 end
