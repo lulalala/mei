@@ -10,7 +10,9 @@
     <%= time_tag @post.created_at, format:@board.config.time_format %>
     <span class="id">#<%= @post.pos %></span>
     <div class="actions">
-      <%= link_to 'Reply', topic_path(@post.topic), class:'reply' %>
+      <% if !@post.topic.locked? %>
+        <%= link_to 'Reply', topic_path(@post.topic), class:'reply' %>
+      <% end %>
     </div>
   </header>
   <%= render_cell :post, :images, @post %>
