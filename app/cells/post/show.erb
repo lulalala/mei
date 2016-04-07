@@ -7,7 +7,7 @@
     <% else %>
       <span class="author"><%= @post.author %></span>
     <% end %>
-    <%= time_tag @post.created_at, format:@board.config.time_format %>
+    <%= link_to time_tag(@post.created_at, format:@board.config.time_format), post_path(@post), rel:'bookmark' %>
     <span class="id">#<%= @post.pos %></span>
     <div class="actions">
       <% if !@post.topic.locked? %>
