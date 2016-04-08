@@ -1,9 +1,7 @@
 <article class="post" id="<%= @post.presenter.dom_id %>" data-pos="<%= @post.pos %>">
   <header class="info">
     <% if @post.options_raw %>
-      <%= mail_to @post.options_raw do %>
-        <span class="author"><%= @post.author || "anonymous" %></span>
-      <% end %>
+      <%= mail_to @post.options_raw do %><span class="author"><%= @post.author || "anonymous" %></span><% end %>
     <% else %>
       <span class="author"><%= @post.author %></span>
     <% end %>
