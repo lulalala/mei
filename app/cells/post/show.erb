@@ -1,12 +1,12 @@
 <article class="post" id="<%= @post.presenter.dom_id %>" data-pos="<%= @post.pos %>">
   <header class="info">
+    <span class="id">#<%= @post.pos %></span>
     <% if @post.options_raw %>
       <%= mail_to @post.options_raw do %><span class="author"><%= @post.author || "anonymous" %></span><% end %>
     <% else %>
       <span class="author"><%= @post.author %></span>
     <% end %>
     <%= link_to time_tag(@post.created_at, format:@board.config.time_format), post_path(@post), rel:'bookmark' %>
-    <span class="id">#<%= @post.pos %></span>
     <div class="actions">
       <% if !@post.topic.locked? %>
         <%= link_to 'Reply', topic_path(@post.topic), class:'reply' %>
