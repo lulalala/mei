@@ -1,4 +1,3 @@
-#= require post_handle
 #= require image_upload
 
 replyContainer = null
@@ -57,8 +56,3 @@ prepareHideLink = () ->
 
 prepareUrl = (path)->
   path.replace(/topics.*/, 'posts/new')
-
-PostHandle.register ($postEl)->
-  return if $postEl.index() != 1
-  url = $postEl.find('.actions .reply').attr('href')
-  $postEl.find('.actions').prepend(" <a class='permalink' href='#{url}'>Thread Permalink</a>")
