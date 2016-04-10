@@ -31,6 +31,13 @@ class Post < ActiveRecord::Base
     end
   end
 
+  validate :validate_topic_lock
+  def validate_topic_lock
+    if topic.locked?
+      errors.add(:topic, :locked)
+    end
+  end
+
   def options_raw=(value)
     super
 

@@ -24,3 +24,9 @@ en:
     attributes:
       post:
         options_raw: Email
+    errors:
+      models:
+        post:
+          attributes:
+            topic:
+              locked: locked thus reply is not allowed

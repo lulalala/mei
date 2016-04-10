@@ -49,4 +49,14 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe 'locked topic' do
+    let!(:topic) { FactoryGirl.create(:topic, locked:true)}
+    subject { FactoryGirl.build(:post, topic: topic) }
+
+    it 'can not reply to locked topic' do
+      expect(subject.save).to eq(false)
+      expect(subject.errors.added?(:topic, :locked)).to eq(true)
+    end
+  end
 end
