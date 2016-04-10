@@ -83,11 +83,11 @@ group :development, :test do
 end
 
 group :test, :darwin do
-  gem 'rspec-rails', '~> 3.2.3'
+  gem 'rspec-rails', '~> 3.4.2'
   gem 'spring-commands-rspec', '~> 1.0.4'
-  gem 'guard-rspec', '~> 4.5.2'
-  gem 'rb-fsevent', '~> 0.9.5'
-  gem 'factory_girl_rails', '~> 4.5.0'
-  gem 'timecop', '~> 0.8.0'
+  gem 'guard-rspec', '~> 4.6.5'
+  gem 'rb-fsevent', '~> 0.9.7'
+  gem 'factory_girl_rails', '~> 4.7.0'
+  gem 'timecop', '~> 0.8.1'
 end
 
