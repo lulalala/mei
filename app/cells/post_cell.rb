@@ -8,6 +8,8 @@ class PostCell < Cell::Rails
   end
 
   def form(topic)
+    return if topic.locked?
+
     @post_form = PostForm.new.from_topic(topic)
     render
   end
