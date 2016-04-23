@@ -10,4 +10,4 @@ module CustomPathHelper
   end
 end
 
-Rails.application.routes.url_helpers.send(:include, CustomPathHelper)
+Rails.application.routes.named_routes.url_helpers_module.send(:include, CustomPathHelper)
