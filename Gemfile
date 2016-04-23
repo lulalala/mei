@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bundler', '>= 1.8.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.6'
 # database
 gem 'pg', '~> 0.18.2'
 # Use SCSS for stylesheets
@@ -67,7 +67,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-blueimp-file-upload', '~> 9.12.1'
 end
 
-gem 'sucker_punch', '~> 1.5.1'
+gem 'sucker_punch', '~> 2.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
