@@ -2,7 +2,7 @@ class PostForm
   include ActiveModel::Model
 
   attr_accessor :topic, :post
-  delegate :title, :board_id, to: :topic
+  delegate :title, :board_id, :file_attachable?, to: :topic
   delegate :author, :content, :options_raw, :topic_id, :images, :images_attributes=, to: :post
 
   # To be called right after new().

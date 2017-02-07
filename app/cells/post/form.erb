@@ -19,7 +19,9 @@
     <%= f.label :options_raw %>
     <%= f.text_field :options_raw %>
   </div>
-  <%= render_cell :post, :image_upload_control, f %>
+  <% if @post_form.file_attachable? %>
+    <%= render_cell :post, :image_upload_control, f %>
+  <% end %>
   <%= f.label :content %>
   <%= f.text_area :content, autocomplete:'off' %>
   <div class="actions">
