@@ -30,4 +30,10 @@ class Image < ActiveRecord::Base
       nil
     end
   end
+
+  # @return file size in bytes
+  def file_size
+    result = `du -c -b #{Pathname.new(image.current_path).parent.to_s}`
+    result.lines.last.split("\t").first.to_i
+  end
 end
