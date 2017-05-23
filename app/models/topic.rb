@@ -27,8 +27,4 @@ class Topic < ActiveRecord::Base
       max_pos: max_pos + 1
     )
   end
-
-  def file_attachable?
-    true
-  end
 end

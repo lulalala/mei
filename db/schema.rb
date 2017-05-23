@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405155046) do
+ActiveRecord::Schema.define(version: 20170523114957) do
 
   create_table "boards", force: :cascade, comment: "board" do |t|
     t.string   "seo_name",   limit: 255,   null: false, comment: "represent name in URL. Must be URL valid characters."
@@ -60,13 +60,14 @@ ActiveRecord::Schema.define(version: 20160405155046) do
   end
 
   create_table "topics", force: :cascade, comment: "topic of discussion, also called thread" do |t|
-    t.string   "title",      limit: 255,                              comment: "title"
-    t.integer  "board_id",   limit: 4,                   null: false
-    t.integer  "max_pos",    limit: 2,   default: 0,     null: false, comment: "current newest post pos, increment as posts are created"
-    t.boolean  "locked",     limit: 1,   default: false, null: false, comment: "prevent further replies"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.datetime "bumped_at",                                           comment: "topic bump time"
+    t.string   "title",           limit: 255,                              comment: "title"
+    t.integer  "board_id",        limit: 4,                   null: false
+    t.integer  "max_pos",         limit: 2,   default: 0,     null: false, comment: "current newest post pos, increment as posts are created"
+    t.boolean  "locked",                      default: false, null: false, comment: "prevent further replies"
+    t.boolean  "file_attachable",             default: true,  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.datetime "bumped_at",                                                comment: "topic bump time"
   end
 
   add_index "topics", ["board_id"], name: "index_topics_on_board_id", using: :btree
