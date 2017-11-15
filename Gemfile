@@ -22,9 +22,10 @@ gem 'jquery-rails-cdn', '~> 1.0.3'
 gem 'turbolinks'
 gem 'jquery-turbolinks', '~> 2.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'json', '~> 1.8.6'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 0.4.2', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
