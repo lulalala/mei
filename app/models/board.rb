@@ -1,4 +1,4 @@
-class Board < ActiveRecord::Base
+class Board < ApplicationRecord
   has_many :topics, inverse_of: :board
 
   serialize :config, BoardConfigSerializer

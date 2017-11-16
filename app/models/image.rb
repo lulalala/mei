@@ -1,4 +1,4 @@
-class Image < ActiveRecord::Base
+class Image < ApplicationRecord
   belongs_to :post, inverse_of: :images
 
   mount_uploader :image, ImageUploader

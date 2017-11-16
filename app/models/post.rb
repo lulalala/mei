@@ -1,6 +1,6 @@
 require 'auto_html/filters/quote'
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy
 

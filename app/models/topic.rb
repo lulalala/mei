@@ -1,4 +1,4 @@
-class Topic < ActiveRecord::Base
+class Topic < ApplicationRecord
   belongs_to :board, inverse_of: :topics
   has_many :posts, inverse_of: :topic, dependent: :destroy
 
