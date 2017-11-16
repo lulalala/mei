@@ -134,7 +134,7 @@ private
   # TODO: check in before_save to block uploading
   after_create :update_file_attachable
   def update_file_attachable
-    if Image.joins(:post => :topic).where(:post => {:topic => topic}).count > 100
+    if Image.joins(:post => :topic).where(:posts => {:topic => topic}).count > 100
       topic.update_columns(file_attachable: false)
     end
   end
