@@ -96,7 +96,7 @@ group :test, :darwin do
   gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'guard-rspec', '~> 4.7'
   gem 'rb-fsevent', '~> 0.10.2'
-  gem 'factory_girl_rails', '~> 4.9.0'
+  gem 'factory_bot_rails', '~> 4.8.2'
   gem 'timecop', '~> 0.9.1'
 end
 

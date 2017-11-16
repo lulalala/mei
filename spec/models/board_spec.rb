@@ -14,12 +14,12 @@ RSpec.describe Board, type: :model do
     it "does not interfere with other board configs" do
       AppConfig['board']['foo'] = 1
 
-      board1 = FactoryGirl.create(:board, config: {'foo' => 7})
-      board2 = FactoryGirl.create(:board)
+      board1 = FactoryBot.create(:board, config: {'foo' => 7})
+      board2 = FactoryBot.create(:board)
 
       board2.config[:foo].should == 1
 
-      board3 = FactoryGirl.create(:board, config: {'foo' => 9})
+      board3 = FactoryBot.create(:board, config: {'foo' => 9})
 
       board3.config[:foo].should == 9
       board2.config[:foo].should == 1

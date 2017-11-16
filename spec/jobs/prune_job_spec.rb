@@ -1,10 +1,10 @@
 require 'rails_helper'
 describe PruneJob do
-  let(:board) { FactoryGirl.create(:board) }
+  let(:board) { FactoryBot.create(:board) }
 
   before do
     5.times do
-      FactoryGirl.create(:topic, board: board)
+      FactoryBot.create(:topic, board: board)
     end
 
     board.stub(:config) {

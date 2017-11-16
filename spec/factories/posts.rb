@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
     content "foo"
     pos 1

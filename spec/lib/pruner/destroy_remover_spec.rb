@@ -1,13 +1,13 @@
 require 'rails_helper'
 describe Pruner::DestroyRemover do
-  let(:board){ FactoryGirl.create(:board) }
-  let(:board2){ FactoryGirl.create(:board) }
+  let(:board){ FactoryBot.create(:board) }
+  let(:board2){ FactoryBot.create(:board) }
 
   before do
     5.times do
-      FactoryGirl.create(:topic, board: board)
+      FactoryBot.create(:topic, board: board)
     end
-    FactoryGirl.create(:topic, board: board2)
+    FactoryBot.create(:topic, board: board2)
   end
 
   it "destroys topic in provided ids" do

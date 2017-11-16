@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PostForm do
-  let(:board){ FactoryGirl.create(:board) }
+  let(:board){ FactoryBot.create(:board) }
 
   let(:params){
     ActionController::Parameters.new(

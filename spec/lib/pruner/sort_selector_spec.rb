@@ -1,12 +1,12 @@
 require 'rails_helper'
 describe Pruner::SortSelector do
-  let(:board){ FactoryGirl.create(:board) }
+  let(:board){ FactoryBot.create(:board) }
 
   subject { described_class.new(board, 3)}
 
   before do
     5.times do
-      FactoryGirl.create(:topic, board: board)
+      FactoryBot.create(:topic, board: board)
     end
   end
 

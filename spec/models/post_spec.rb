@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   before do
-    subject.stub(:board) { FactoryGirl.create(:board) }
+    subject.stub(:board) { FactoryBot.create(:board) }
   end
   describe '#options_raw=' do
     it 'analyze value' do
@@ -18,9 +18,9 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'reply' do
-    let!(:board) { FactoryGirl.create(:board) }
-    let!(:topic) { FactoryGirl.create(:topic, board:board)}
-    let!(:post1) { FactoryGirl.create(:post, topic:topic, content:'first post')}
+    let!(:board) { FactoryBot.create(:board) }
+    let!(:topic) { FactoryBot.create(:topic, board:board)}
+    let!(:post1) { FactoryBot.create(:post, topic:topic, content:'first post')}
 
     it do
       post2 = Post.create(topic: topic, content: "> 1 foo")
@@ -51,8 +51,8 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'locked topic' do
-    let!(:topic) { FactoryGirl.create(:topic, locked:true)}
-    subject { FactoryGirl.build(:post, topic: topic) }
+    let!(:topic) { FactoryBot.create(:topic, locked:true)}
+    subject { FactoryBot.build(:post, topic: topic) }
 
     it 'can not reply to locked topic' do
       expect(subject.save).to eq(false)

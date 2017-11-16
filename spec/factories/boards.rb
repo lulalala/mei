@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :board do
     sequence(:name){|n| "Board #{n}" }
     sequence(:seo_name){|n| "board#{n}" }

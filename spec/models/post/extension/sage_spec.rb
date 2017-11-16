@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Post::Extension::Sage do
-  let(:board) { FactoryGirl.create(:board) }
-  let(:topic) { FactoryGirl.create(:topic, board:board).reload }
-  let(:post) { FactoryGirl.create(:post, topic:topic) }
+  let(:board) { FactoryBot.create(:board) }
+  let(:topic) { FactoryBot.create(:topic, board:board).reload }
+  let(:post) { FactoryBot.create(:post, topic:topic) }
 
   it 'does not bump' do
     old_bumped_at = topic.bumped_at
