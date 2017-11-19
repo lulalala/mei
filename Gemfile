@@ -12,7 +12,7 @@ gem 'rails', '5.1.4'
 # database
 gem 'pg', '~> 0.18.2'
 # Use Puma as the app server
-gem 'puma', '~> 3.7.0'
+gem 'puma', '~> 3.10.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
