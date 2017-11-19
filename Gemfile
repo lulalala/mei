@@ -12,7 +12,7 @@ gem 'rails', '5.1.4'
 # database
 gem 'pg', '~> 0.18.2'
 # Use Puma as the app server
-gem 'puma', '~> 3.7.0'
+gem 'puma', '~> 3.6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.7'
 # Use Uglifier as compressor for JavaScript assets
@@ -88,7 +88,7 @@ group :development, :test do
   gem 'selenium-webdriver'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring', '~> 1.3.6'
+  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'mysql2', '~> 0.3.18' # Sequel Pro is too good that I can't escape MySQL
