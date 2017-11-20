@@ -262,7 +262,8 @@ GEM
     shellany (0.0.1)
     sitemap_generator (5.0.5)
       builder
-    spring (1.3.6)
+    spring (2.0.2)
+      activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
@@ -344,7 +345,7 @@ DEPENDENCIES
   selenium-webdriver
   settingslogic (~> 2.0)
   sitemap_generator (~> 5.0.5)
-  spring (~> 1.3.6)
+  spring
   spring-commands-rspec (~> 1.0.4)
   spring-watcher-listen (~> 2.0.0)
   sucker_punch (~> 2.0.1)
