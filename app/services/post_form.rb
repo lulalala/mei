@@ -1,3 +1,5 @@
+require 'topic/reply'
+
 class PostForm
   include ActiveModel::Model
 
@@ -18,11 +20,20 @@ class PostForm
   def from_params(params)
     if params[:topic_id].present?
       @topic = Topic.find(params[:topic_id])
+
+      @post = Topic::Reply.run!(
+        topic: @topic,
+        author: params[:author],
+        content: params[:content],
+        options_raw: params[:options_raw],
+        images: build_images_from_params(params)
+      )
     else
       @topic = Board.find(params[:board_id]).topics.build
+      @post = @topic.posts.build
+      attributes(params)
     end
-    @post = @topic.posts.build
-    attributes(params)
+
     self
   end
 
