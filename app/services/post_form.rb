@@ -71,7 +71,7 @@ class PostForm
       if !object.valid?
         validity = false
         object.errors.each do |key, values|
-          errors[key] = values
+          errors.add(key, values)
         end
       end
     end
