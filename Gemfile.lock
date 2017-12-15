@@ -41,6 +41,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    adequate_errors (0.1.1)
+      activemodel
     arel (8.0.0)
     auto_html (1.6.4)
       redcarpet (~> 3.1)
@@ -307,6 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  adequate_errors (~> 0.1.1)
   auto_html (~> 1.6.4)
   bundler (>= 1.8.4)
   byebug

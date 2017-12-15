@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         }
         format.html { redirect_to @post_form.topic }
       else
-        flash[:error] = @post_form.errors.full_messages.join('<br/>').html_safe
+        flash[:error] = @post_form.errors.adequate.messages.join('<br/>').html_safe
 
         format.json {
           render json: {

@@ -48,6 +48,7 @@ gem 'kaminari', '~> 1.1.1'
 gem 'auto_html', '~> 1.6.4'
 gem 'lulalala_presenter', "~> 0.1.0"
 
+gem 'adequate_errors', '~> 0.1.1'
 gem 'nilify_blanks', '~> 1.2.1'
 
 gem 'migration_comments', '~> 0.4.1'

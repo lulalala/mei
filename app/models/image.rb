@@ -19,9 +19,9 @@ class Image < ApplicationRecord
     @invalid_reason = nil
 
     if checker.content_length.present? && checker.content_length > 5.megabytes
-      @invalid_reason = "file size too big"
+      @invalid_reason = :file_size_too_big
     elsif checker.type.nil?
-      @invalid_reason = "not an image file"
+      @invalid_reason = :invalid_image_file
     end
 
     if @invalid_reason.nil?

@@ -40,3 +40,16 @@ en:
           attributes:
             topic:
               locked: locked thus reply is not allowed
+
+    adequate_errors:
+      models:
+        image:
+          attributes:
+            image:
+              file_size_too_big: File size is too big.
+              invalid_image_file: File is not an image.
+        post:
+          no_content: Image or content is required.
+          attributes:
+            topic:
+              locked: '%{attribute} locked thus reply is not allowed'

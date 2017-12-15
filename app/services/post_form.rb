@@ -70,8 +70,8 @@ class PostForm
     [post, topic].each do |object|
       if !object.valid?
         validity = false
-        object.errors.each do |key, values|
-          errors.add(key, values)
+        object.errors.adequate.each do |error|
+          errors.adequate.import(error)
         end
       end
     end

@@ -27,7 +27,7 @@ class Post < ApplicationRecord
   validate :validate_content
   def validate_content
     if images.blank? && content.blank?
-      errors.add(:base, 'Image or content is required')
+      errors.add(:base, :no_content)
     end
   end
 
