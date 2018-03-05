@@ -10,5 +10,5 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 
-Mei::Application.config.secret_token = AppConfig.rails.secret_token
-Mei::Application.config.secret_key_base = AppConfig.rails.secret_key_base
+Mei::Application.config.secret_token = Setting.dig(:rails, :secret_token)
+Mei::Application.config.secret_key_base = Setting.dig(:rails, :secret_key_base)

@@ -1,5 +1,3 @@
-require_relative 'app_config'
-
 require_relative 'boot'
 
 require 'rails/all'

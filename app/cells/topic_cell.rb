@@ -23,8 +23,8 @@ private
   def topic_omittable?(topic)
     Omit.omit?(
       topic.posts.size - 1,
-      topic.board.reply_omit_condition.n_recent_only,
-      topic.board.reply_omit_condition.avoid_only_n_hidden
+      topic.board.reply_omit_condition.dig(:n_recent_only),
+      topic.board.reply_omit_condition.dig(:avoid_only_n_hidden)
     )
   end
 end

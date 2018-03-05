@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/lulalala/settei.git
+  revision: 41fefad8934aafba6e8b47f23f2a6ed9fc00274b
+  specs:
+    settei (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -346,6 +352,7 @@ DEPENDENCIES
   seed-fu (~> 2.3.6)
   seedbank (~> 0.3)
   selenium-webdriver
+  settei!
   settingslogic (~> 2.0)
   sitemap_generator (~> 5.0.5)
   spring

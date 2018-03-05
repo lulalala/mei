@@ -1,6 +1,6 @@
 class BoardPresenter < LulalalaPresenter::Base
   def representative_image_url
-    model.config.seo.image
+    model.config.dig(:seo, :image)
   end
 
   def og_image_tag

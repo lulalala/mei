@@ -41,7 +41,7 @@ class Post < ApplicationRecord
   def options_raw=(value)
     super
 
-    analyzer = RawOptionsAnalyzer.new(options_raw, board.config.post.allowed_options)
+    analyzer = RawOptionsAnalyzer.new(options_raw, board.config.dig(:post, :allowed_options))
     self.email = analyzer.email
     self.options = analyzer.options
     extend_options

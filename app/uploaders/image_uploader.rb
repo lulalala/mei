@@ -75,7 +75,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       img.combine_options do |cmd|
         cmd.gravity 'SouthEast'
         cmd.draw 'text 10,10 "GIF"'
-        cmd.font AppConfig.carrierwave.watermark.font
+        cmd.font Setting.dig(:carrierwave, :watermark, :font)
         cmd.pointsize '24'
         cmd.fill 'black'
       end

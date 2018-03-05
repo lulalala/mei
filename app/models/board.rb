@@ -3,9 +3,9 @@ class Board < ApplicationRecord
 
   serialize :config, BoardConfigSerializer
   def config
-    @cascaded_config ||= AppConfig.board.dup.tap do |c|
+    @cascaded_config ||= Setting.dig_and_wrap(:board).tap do |c|
       if board_config = super
-        c.merge!(board_config)
+        c.merge(board_config)
       end
     end
   end
@@ -17,7 +17,7 @@ class Board < ApplicationRecord
   # Reply Omittion
 
   def reply_omit_condition
-    AppConfig.board.reply_omit_condition
+    Setting.dig(:board, :reply_omit_condition)
   end
 
   # @return total file size in bytes

@@ -28,3 +28,5 @@
 /public/uploads
 
 /app/views/partials
+
+/config/environments/*.yml

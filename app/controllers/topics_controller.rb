@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   def index
     @topics = @board.topics.order(bumped_at: :desc).
       page(params[:page]).
-      per(@board.config.pagination.per_page)
+      per(@board.config.dig(:pagination, :per_page))
   end
 
   # GET /topics/1
