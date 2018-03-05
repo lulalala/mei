@@ -12,7 +12,7 @@ class TopicCell < Cell::Rails
 
     return if !topic_omittable?(topic)
 
-    limit = @topic.posts.size - 1 - @topic.board.reply_omit_condition.n_recent_only
+    limit = @topic.posts.size - 1 - @topic.board.reply_omit_condition[:n_recent_only]
     @posts = @topic.posts.order(id: :asc).includes(:images).offset(1).limit(limit)
 
     render

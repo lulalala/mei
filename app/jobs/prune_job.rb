@@ -20,16 +20,17 @@ class PruneJob < ActiveJob::Base
   def perform(board)
     config = board.config
 
-    return if config.prune['selector_class'].nil? || config.prune['remover_class'].nil?
+    prune = config.dig(:prune)
+    return if prune['selector_class'].nil? || prune['remover_class'].nil?
 
-    per_page = config.pagination.per_page
-    max_page = config.pagination.max_page
+    per_page = config.dig(:pagination, :per_page)
+    max_page = config.dig(:pagination, :max_page)
 
-    selector_class = ::Pruner.const_get(config.prune.selector_class)
-    remover_class = ::Pruner.const_get(config.prune.remover_class)
+    selector_class = ::Pruner.const_get(prune[:selector_class])
+    remover_class = ::Pruner.const_get(prune[:remover_class])
 
-    selector_options = config.prune.selector_options.to_h.symbolize_keys!
-    remover_options = config.prune.remover_options.to_h.symbolize_keys!
+    selector_options = prune[:selector_options].symbolize_keys!
+    remover_options = prune[:remover_options].symbolize_keys!
 
     ids = selector_class.new(board, per_page * max_page, selector_options).perform
     remover_class.new(board, ids, remover_options).perform
