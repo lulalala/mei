@@ -1,4 +1,4 @@
-class CreateViewFragments < ActiveRecord::Migration
+class CreateViewFragments < ActiveRecord::Migration[5.1]
   def change
     create_table :view_fragments, comment:'Custom HTML fragments to be displayed' do |t|
       t.references :board, foreign_key: true
