@@ -5,7 +5,7 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 
 **Visit the [wiki](https://github.com/lulalala/mei/wiki) to see more information! I try to minimize number of commits so documentations are all over there!**
 
-###Highlights
+### Highlights
 
 * Multi-image upload
 * Image upload using url
