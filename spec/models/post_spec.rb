@@ -18,11 +18,17 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'reply' do
+    around do |example|
+      perform_enqueued_jobs do
+        example.run
+      end
+    end
+
     let!(:board) { FactoryBot.create(:board) }
     let!(:topic) { FactoryBot.create(:topic, board:board)}
     let!(:post1) { FactoryBot.create(:post, topic:topic, content:'first post')}
 
-    it do
+    it "nests posts" do
       post2 = Post.create(topic: topic, content: "> 1 foo")
       post3 = Post.create(topic: topic, content: "> 1\n > 2 bar")
 

@@ -75,7 +75,7 @@ describe PostForm do
       }
       it "returns false" do
         subject.valid?.should == false
-        subject.errors[:base].present?.should == true
+        subject.errors.adequate.messages.present?.should == true
       end
     end
 
