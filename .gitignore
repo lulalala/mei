@@ -30,3 +30,6 @@
 /app/views/partials
 
 /config/environments/*.yml
+
+Dockerfile
+docker-compose.yml

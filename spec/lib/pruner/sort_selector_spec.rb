@@ -10,7 +10,8 @@ describe Pruner::SortSelector do
     end
   end
 
+  let(:ids) { Topic.order(id: :asc).limit(2).pluck(:id) }
   it "returns id" do
-    subject.perform.should == Topic.order(id: :asc).limit(2).pluck(:id)
+    expect(subject.perform).to match_array(ids)
   end
 end
