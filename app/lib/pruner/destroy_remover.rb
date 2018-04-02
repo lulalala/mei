@@ -9,6 +9,7 @@ module Pruner
     end
 
     def perform
+      return if @topic_ids.blank?
       @board.topics.where(id: @topic_ids).destroy_all
     end
   end

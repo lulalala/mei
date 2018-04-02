@@ -26,11 +26,11 @@ class PruneJob < ActiveJob::Base
     per_page = config.dig(:pagination, :per_page)
     max_page = config.dig(:pagination, :max_page)
 
-    selector_class = ::Pruner.const_get(prune[:selector_class])
-    remover_class = ::Pruner.const_get(prune[:remover_class])
+    selector_class = Pruner.const_get(prune[:selector_class])
+    remover_class = Pruner.const_get(prune[:remover_class])
 
-    selector_options = prune[:selector_options].symbolize_keys!
-    remover_options = prune[:remover_options].symbolize_keys!
+    selector_options = (prune[:selector_options] || HashWithIndifferentAccess.new).symbolize_keys
+    remover_options = (prune[:remover_options] || HashWithIndifferentAccess.new).symbolize_keys
 
     ids = selector_class.new(board, per_page * max_page, selector_options).perform
     remover_class.new(board, ids, remover_options).perform
