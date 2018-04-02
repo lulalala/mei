@@ -31,5 +31,4 @@
 
 /config/environments/*.yml
 
-Dockerfile
 docker-compose.yml

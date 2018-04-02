@@ -1,15 +1,13 @@
 version: '3.5'
 services:
-  app:
+  testapp:
     build:
       context: .
     depends_on:
-      - db
+      - testdb
     environment:
-      RAILS_ENV: development
-      DATABASE_URL: postgresql://mei:mei@db/development
-    ports:
-      - '3000:3000'
+      RAILS_ENV: test
+      DATABASE_URL: postgresql://mei:mei@testdb/test
     networks:
       mei-exposed:
         aliases:
@@ -18,16 +16,16 @@ services:
     volumes:
       - .:/usr/src/app
 
-  db:
+  testdb:
     image: postgres:9.6-alpine
     environment:
-      POSTGRES_DB: development
+      POSTGRES_DB: test
       POSTGRES_USER: mei
       POSTGRES_PASSWORD: mei
     networks:
       - mei
     volumes:
-      - .docker/postgres/data/meidevelopment:/var/lib/postgresql/data
+      - .docker/postgres/data/meitest:/var/lib/postgresql/data
 
 networks:
   mei-exposed:
