@@ -1,0 +1,6 @@
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password:
+  database: mei_<%= Rails.env %>
+  min_messages: ERROR

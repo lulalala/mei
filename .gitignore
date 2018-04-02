@@ -29,12 +29,7 @@
 
 /app/views/partials
 
-# Note that we allow default.yml to be
-# committed since it shouldn't contain any sensitive
-# information and we need a publicly available configuration
-# file so that Travis CI (a free, public CI server) can load the app
 /config/environments/*.yml
-!/config/environments/default.yml
 
 Dockerfile
 docker-compose.yml
