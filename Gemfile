@@ -57,7 +57,7 @@ gem 'seed-fu', '~> 2.3.6'
 gem 'seedbank', '~> 0.3'
 
 gem 'settingslogic', '~> 2.0'
-gem 'settei', github:'lulalala/settei'
+gem 'settei', '~> 0.1.3'
 
 gem 'unobtrusive_flash', '~> 3.3.1'
 
