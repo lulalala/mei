@@ -13,21 +13,32 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 * Extensible
 
 ## Docker
-First run:
+**First run:**
+
     cp config/database.yml.example config/database.yml
+
     cp docker-compose.yml.example docker-compose.yml
+
     docker-compose up -d #-d for daemon mode in the background
+
     docker-compose exec app rake db:create #NOTE: you must wait for pg to fully start or you will get an error "could not connect to server: Connection refused"
+
     docker-compose exec app rake db:migrate
+
     docker-compose exec app rake db:seed
+
 Then visit `localhost:3000/i` in your browser.
 
-To stop the server:
+**To stop the server:**
+
   docker-compose stop
 
-To run the specs:
+**To run the specs:**
+
     docker-compose exec app rspec
 
-Here are a couple example aliases you might find useful to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`)
+**Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`)**
+
     alias d="docker-compose exec app " #note this includes `bundle exec` by default from the Dockerfile's `ENTRYPOINT`
+
     alias dc="docker-compose "
