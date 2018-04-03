@@ -21,7 +21,8 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 
     docker-compose up -d
 
-    docker-compose exec app rake db:create #NOTE: you must wait for pg to fully start or you will get an error "could not connect to server: Connection refused"
+    #NOTE: you must wait for pg to fully start or you will get an error "could not connect to server: Connection refused"
+    docker-compose exec app rake db:create 
 
     docker-compose exec app rake db:migrate
 
