@@ -45,6 +45,7 @@ Then visit `localhost:3000/i` in your browser.
 
 **Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`):**
 
-    alias d="docker-compose exec app " #note this includes `bundle exec` by default from the Dockerfile's `ENTRYPOINT`
+    # NOTE: this includes `bundle exec` by default from the Dockerfile's `ENTRYPOINT`
+    alias d="docker-compose exec app " 
 
     alias dc="docker-compose "
