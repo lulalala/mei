@@ -29,15 +29,15 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 
 Then visit `localhost:3000/i` in your browser.
 
-**To stop the server:**
+**Stop the server:**
 
   docker-compose stop
 
-**To run the specs:**
+**Run specs:**
 
     docker-compose exec app rspec
 
-**Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`)**
+**Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`):**
 
     alias d="docker-compose exec app " #note this includes `bundle exec` by default from the Dockerfile's `ENTRYPOINT`
 
