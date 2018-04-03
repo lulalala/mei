@@ -1,3 +1,4 @@
+# Ruby + Node are necessary for a Rails app (Node is needed for asset pipeline)
 FROM sztheory/rubynode:2.5.1_8.11.0
 
 # Install apt based dependencies required to run Rails as well as RubyGems and any other gem deps.
