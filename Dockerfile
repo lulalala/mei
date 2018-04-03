@@ -1,5 +1,7 @@
 FROM sztheory/rubynode:2.5.1_8.11.0
 
+# Install apt based dependencies required to run Rails as well as RubyGems and any other gem deps.
+# As the Ruby image itself is based on an Alpine image, we use apk to install those
 RUN apk add --no-cache \
     bash \
     binutils-gold \
@@ -7,25 +9,35 @@ RUN apk add --no-cache \
     g++ \
     gcc \
     imagemagick \
+    make \
     libressl-dev \
     libssl1.0 \
     libxml2-dev \
     libxslt-dev \
-    make \
     postgresql-dev \
     readline-dev \
-    tzdata && \
-  mkdir -p /usr/src/app
+    tzdata \
+  && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/app
+# Configure the main working directory. This is the base 
+# directory used in any further RUN, COPY, and ENTRYPOINT commands
+RUN mkdir /app
+WORKDIR /app
 
-COPY Gemfile /usr/src/app/
-COPY Gemfile.lock /usr/src/app/
-
+# Copy the Gemfile as well as the Gemfile.lock and install 
+# the RubyGems. This is a separate step so the dependencies 
+# will be cached unless changes to one of those two files are made
+COPY Gemfile /app
+COPY Gemfile.lock /app
 RUN bundle install
 
-ADD . /usr/src/app
+# Copy the main application.
+COPY . /app
 
-EXPOSE 3000
+# Configure an entry point, so we don't need to specify 
+# "bundle exec" for each of our commands
+ENTRYPOINT ["bundle", "exec"]
 
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+# The main command to run when the container starts. Also 
+# tell the Rails dev server to bind to all interfaces by default
+CMD ["rails", "server", "-b", "0.0.0.0"]

@@ -1,39 +1,19 @@
 version: '3.5'
 services:
   app:
-    build:
-      context: .
+    build: .
+    entrypoint: bundle exec # so we don't need to specify "bundle exec" for each of our commands
+    command: rails s -p 3000 -b '0.0.0.0'
     depends_on:
-      - db
-    environment:
-      RAILS_ENV: development
-      DATABASE_URL: postgresql://mei:mei@db/development
+      - postgres
     ports:
       - '3000:3000'
-    networks:
-      mei-exposed:
-        aliases:
-          - mei
-      mei:
     volumes:
-      - .:/usr/src/app
+      - .:/app
 
-  db:
+  postgres:
     image: postgres:9.6-alpine
     environment:
-      POSTGRES_DB: development
-      POSTGRES_USER: mei
-      POSTGRES_PASSWORD: mei
-    networks:
-      - mei
+      POSTGRES_PASSWORD: password
     volumes:
       - .docker/postgres/data/meidevelopment:/var/lib/postgresql/data
-
-networks:
-  mei-exposed:
-    driver: bridge
-    name: mei-exposed
-  mei:
-    driver: bridge
-    name: mei
-    internal: true

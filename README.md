@@ -13,5 +13,21 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 * Extensible
 
 ## Docker
-    docker-compose up #run the app
-    docker-compose -f docker-compose.test.yml run testapp bundle exec rspec #run specs
+First run:
+    cp config/database.yml.example config/database.yml
+    cp docker-compose.yml.example docker-compose.yml
+    docker-compose up -d #-d for daemon mode in the background
+    docker-compose exec app rake db:create
+    docker-compose exec app rake db:migrate
+    docker-compose exec app rake db:seed
+Then visit `localhost:3000/i` in your browser.
+
+To stop the server:
+  docker-compose stop
+
+To run the specs:
+    docker-compose exec app rspec
+
+Here are a couple example aliases you might find useful to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`)
+    alias d="docker-compose exec app " #note this includes `bundle exec` by default from the Dockerfile's `ENTRYPOINT`
+    alias dc="docker-compose "
