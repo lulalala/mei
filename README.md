@@ -33,11 +33,11 @@ Then visit `localhost:3000/i` in your browser.
 
 **Start server:**
 
-  docker-compose up -d #-d for daemon mode in the background
+    docker-compose up -d #-d for daemon mode in the background
 
 **Stop server:**
 
-  docker-compose stop
+    docker-compose stop
 
 **Run specs:**
 
