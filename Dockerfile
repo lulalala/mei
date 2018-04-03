@@ -16,8 +16,7 @@ RUN apk add --no-cache \
     libxslt-dev \
     postgresql-dev \
     readline-dev \
-    tzdata \
-  && rm -rf /var/lib/apt/lists/*
+    tzdata
 
 # Configure the main working directory. This is the base 
 # directory used in any further RUN, COPY, and ENTRYPOINT commands
