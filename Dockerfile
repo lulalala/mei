@@ -33,11 +33,3 @@ RUN bundle install
 
 # Copy the main application.
 COPY . /app
-
-# Configure an entry point, so we don't need to specify 
-# "bundle exec" for each of our commands
-ENTRYPOINT ["bundle", "exec"]
-
-# The main command to run when the container starts. Also 
-# tell the Rails dev server to bind to all interfaces by default
-CMD ["rails", "server", "-b", "0.0.0.0"]

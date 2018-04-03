@@ -14,6 +14,9 @@ services:
   postgres:
     image: postgres:9.6-alpine
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+    ports:
+      - "5432:5432"
     volumes:
-      - .docker/postgres/data/meidevelopment:/var/lib/postgresql/data
+      - .docker/postgres/data/development:/var/lib/postgresql/data

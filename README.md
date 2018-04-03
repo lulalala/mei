@@ -17,7 +17,7 @@ First run:
     cp config/database.yml.example config/database.yml
     cp docker-compose.yml.example docker-compose.yml
     docker-compose up -d #-d for daemon mode in the background
-    docker-compose exec app rake db:create
+    docker-compose exec app rake db:create #NOTE: you must wait for pg to fully start or you will get an error "could not connect to server: Connection refused"
     docker-compose exec app rake db:migrate
     docker-compose exec app rake db:seed
 Then visit `localhost:3000/i` in your browser.
