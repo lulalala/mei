@@ -19,7 +19,7 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 
     cp docker-compose.yml.example docker-compose.yml
 
-    docker-compose up -d #-d for daemon mode in the background
+    docker-compose up -d
 
     docker-compose exec app rake db:create #NOTE: you must wait for pg to fully start or you will get an error "could not connect to server: Connection refused"
 
@@ -29,7 +29,11 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 
 Then visit `localhost:3000/i` in your browser.
 
-**Stop the server:**
+**Start server:**
+
+  docker-compose up -d #-d for daemon mode in the background
+
+**Stop server:**
 
   docker-compose stop
 
