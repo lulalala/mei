@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/' => 'application#index'
+  
   scope '/:board' do
     get '/' => 'topics#index', as: :board
     resources :topics, only:[:show] do

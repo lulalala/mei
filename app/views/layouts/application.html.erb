@@ -18,7 +18,7 @@
 <%= yield %>
 
 <footer>
-  <%= link_to 'Board Index', board_path %>
+  <%= link_to "#{@board.name} index", board_path %>
   <%= render_custom_partial :bottom_of_footer %>
 </footer>
 </body>

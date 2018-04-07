@@ -10,7 +10,11 @@
     <h1>Welcome to Mei</h1>
 
     <ul>
-      <li><a href='/i'>/i/ Imageboard</li>
+      <% @boards.each do |board| %>
+        <li>
+          <%= link_to "/#{board.seo_name}/ #{board.name}", board_path(board) %>
+        </li>
+      <% end %>
     </ul>
   </body>
 </html>

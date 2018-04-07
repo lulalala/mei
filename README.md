@@ -79,7 +79,7 @@ Boot into the Rails console with `rails c`. Then you can run commands such as:
 
 ## Customization
 
-You can replace `index.html` with whatever you want in order to change the home page. This is a static HTML file. You can also edit/replace partials in `app/views/partials/_global` for `_bottom_of_footer.erb`, `_bottom_of_head.erb`, `_top_of_header.erb`, and `_after_form.erb` to customize the global content. To override these settings on a per-board basis, create a corresponding version for your board name. For example to override the global footer with one specific to /i/ you'd create a `app/views/partials/i/_bottom_of_footer.erb`
+You can replace `app/views/application/index.html` with whatever you want in order to change the home page. You can also edit/replace partials in `app/views/partials/_global` for `_bottom_of_footer.erb`, `_bottom_of_head.erb`, `_top_of_header.erb`, and `_after_form.erb` to customize the global content. To override these settings on a per-board basis, create a corresponding version for your board name. For example to override the global footer with one specific to /i/ you'd create a `app/views/partials/i/_bottom_of_footer.erb`
 
 ### Partials
 
@@ -89,4 +89,4 @@ You can replace `index.html` with whatever you want in order to change the home 
 
 `bottom_of_footer` footer content
 
-`after_form` content underneath the post such as news or board rules
+`after_form` content underneath the post form such as news or board rules

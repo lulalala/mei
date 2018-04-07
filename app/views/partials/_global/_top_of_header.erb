@@ -1,9 +1,1 @@
-[
-<% boards = Board.all %>
-<% boards.each_with_index do |board, i| %>
-  &nbsp;<%= link_to board.seo_name, board_path %>&nbsp;
-  <% if i < boards.size-1 %>
-    /
-  <% end %>
-<% end %>
-]
+<%= render partial: 'layouts/board_list' %>
