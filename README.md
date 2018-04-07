@@ -55,7 +55,7 @@ Then visit `localhost:3000/i` in your browser.
 
     alias dc="docker-compose "
 
-## Managing your board data:
+## Managing your board data
 
 Boot into the Rails console with `rails c`. Then you can run commands such as:
 
