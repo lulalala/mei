@@ -84,6 +84,9 @@ You can replace `index.html` with whatever you want in order to change the home 
 ### Partials
 
 `bottom_of_head` placed at the bottom of <head> to insert custom javascipt/css
+
 `top_of_header` top nav bar
+
 `bottom_of_footer` footer content
+
 `after_form` content underneath the post such as news or board rules
