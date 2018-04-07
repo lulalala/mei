@@ -13,9 +13,14 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 * Extensible
 
 ## Docker
+
+Requires `docker` and `docker-compose` installed on your box.
+
 **First run:**
 
     cp config/database.yml.example config/database.yml
+
+    cp config/environments/default.yml.example config/environments/default.yml
 
     cp docker-compose.yml.example docker-compose.yml
 
@@ -49,3 +54,36 @@ Then visit `localhost:3000/i` in your browser.
     alias d="docker-compose exec app " 
 
     alias dc="docker-compose "
+
+## Managing your board data:
+
+Boot into the Rails console with `rails c`. Then you can run commands such as:
+
+`Topic.destroy_all` clear out the default topic its nested posts
+
+`Post.destroy_all` clear all posts, across all boards
+
+`Post.find(idhere).destroy` delete a post
+
+`Topic.find(idhere).destroy` delete a topic and all of its nested posts
+
+`Post.find(idhere).update_attribute(:content_html, "<p>I didn't say that!</p>")` update a specific post
+
+`Board.find_by_seo_name("i").topics.destroy_all` clear all topics/posts on the specified board
+
+`Board.all` list all boards, including the default /i/
+
+`Board.first.update_attributes(seo_name: "b", name: "Random")` updates the default board info
+
+`Board.create(seo_name: "a", name: "Anime")` creates a new board
+
+## Customization
+
+You can replace `index.html` with whatever you want in order to change the home page. This is a static HTML file. You can also edit/replace partials in `app/views/partials/_global` for `_bottom_of_footer.erb`, `_bottom_of_head.erb`, `_top_of_header.erb`, and `_after_form.erb` to customize the global content. To override these settings on a per-board basis, create a corresponding version for your board name. For example to override the global footer with one specific to /i/ you'd create a `app/views/partials/i/_bottom_of_footer.erb`
+
+### Partials
+
+`bottom_of_head` placed at the bottom of <head> to insert custom javascipt/css
+`top_of_header` top nav bar
+`bottom_of_footer` footer content
+`after_form` content underneath the post such as news or board rules

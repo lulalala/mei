@@ -1,3 +1,5 @@
+# TODO: mount this for development/test envs
+
 # Ruby + Node are necessary for a Rails app (Node is needed for asset pipeline)
 FROM sztheory/rubynode:2.5.1_8.11.0
 
