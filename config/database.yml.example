@@ -13,3 +13,7 @@ development:
 test:
   <<: *defaults
   database: mei_test
+
+production:
+  <<: *defaults
+  database: mei_production
