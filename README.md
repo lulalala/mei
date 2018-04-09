@@ -46,6 +46,10 @@ Then visit `localhost:3000/i` in your browser.
 
 **Run specs:**
 
+    docker-compose build app
+
+    docker-compose up -d
+
     docker-compose exec app rspec
 
 **Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`):**

@@ -9,7 +9,7 @@ end
 gem 'bundler', '>= 1.8.4' #package manager
 gem 'pg', '~> 0.18.2' #db
 gem 'puma', '~> 3.11.2' #app server
-gem 'rails', '5.1.6' #mvc web framework
+gem 'rails', '~> 5.2' #mvc web framework
 
 # CSS
 gem 'sass-rails', '~> 5.0.7' #scss stylesheets
