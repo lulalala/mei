@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170523114957) do
+ActiveRecord::Schema.define(version: 2017_05_23_114957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boards", force: :cascade, comment: "board" do |t|
+  create_table "boards", comment: "board", force: :cascade do |t|
     t.string "seo_name", null: false, comment: "represent name in URL. Must be URL valid characters."
     t.string "name", null: false, comment: "display name on top of page"
     t.datetime "created_at", null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170523114957) do
     t.index ["seo_name"], name: "index_boards_on_seo_name", unique: true
   end
 
-  create_table "images", force: :cascade, comment: "image" do |t|
+  create_table "images", comment: "image", force: :cascade do |t|
     t.bigint "post_id"
     t.string "image", comment: "filename"
     t.datetime "created_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170523114957) do
     t.index ["remote_url"], name: "index_images_on_remote_url"
   end
 
-  create_table "posts", force: :cascade, comment: "text content posted. New post or reply comments are all posts." do |t|
+  create_table "posts", comment: "text content posted. New post or reply comments are all posts.", force: :cascade do |t|
     t.text "content", comment: "text content"
     t.string "author", comment: "author name"
     t.string "email", comment: "email"
@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 20170523114957) do
     t.index ["topic_id"], name: "index_posts_on_topic_id"
   end
 
-  create_table "replies", force: :cascade, comment: "replying relations between posts" do |t|
+  create_table "replies", comment: "replying relations between posts", force: :cascade do |t|
     t.integer "ancestor_id", comment: "post that is being replied to"
     t.integer "descendant_id", comment: "post that is the reply"
   end
 
-  create_table "topics", force: :cascade, comment: "topic of discussion, also called thread" do |t|
+  create_table "topics", comment: "topic of discussion, also called thread", force: :cascade do |t|
     t.string "title", comment: "title"
     t.bigint "board_id", null: false
     t.datetime "created_at", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170523114957) do
     t.index ["board_id"], name: "index_topics_on_board_id"
   end
 
-  create_table "view_fragments", force: :cascade, comment: "Custom HTML fragments to be displayed" do |t|
+  create_table "view_fragments", comment: "Custom HTML fragments to be displayed", force: :cascade do |t|
     t.bigint "board_id"
     t.string "name", null: false, comment: "name for referencing"
     t.text "content", comment: "html fragment"

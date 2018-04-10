@@ -22,17 +22,15 @@ Requires `docker` and `docker-compose` installed on your box.
 
     cp config/environments/default.yml.example config/environments/default.yml
 
-    cp docker-compose.yml.example docker-compose.yml
-
     docker-compose up -d
 
-    # NOTE: you must wait for pg to fully start or you will get 
-    # an error "could not connect to server: Connection refused"
-    docker-compose exec app rake db:create 
+    docker-compose exec app bundle install --path /bundle --jobs 3 --retry 3
+    
+    docker-compose exec app bundle exec rake db:create 
 
-    docker-compose exec app rake db:migrate
+    docker-compose exec app bundle exec rake db:migrate
 
-    docker-compose exec app rake db:seed
+    docker-compose exec app bundle exec rake db:seed
 
 Then visit `localhost:3000/i` in your browser.
 
@@ -50,7 +48,7 @@ Then visit `localhost:3000/i` in your browser.
 
     docker-compose up -d
 
-    docker-compose exec app rspec
+    docker-compose exec app bundle exec rspec
 
 **Useful aliases to avoid repetitive typing (place in `~/.bash_profile` or `~/.zshrc`):**
 

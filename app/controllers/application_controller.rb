@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :set_board
   def set_board
     if !params[:board].blank?
-      @board = Board.find_by(seo_name:params[:board])
+      @board = Board.find_by(seo_name: params[:board])
       default_url_options[:board] = params[:board]
     end
   end

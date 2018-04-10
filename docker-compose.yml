@@ -2,14 +2,14 @@ version: '3.5'
 services:
   app:
     build: .
-    entrypoint: bundle exec # so we don't need to specify "bundle exec" for each of our commands
-    command: rails s -p 3000 -b '0.0.0.0'
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     depends_on:
       - postgres
     ports:
       - '3000:3000'
     volumes:
       - .:/app
+      - .docker/bundle:/bundle
 
   postgres:
     image: postgres:9.6-alpine
@@ -19,4 +19,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - .docker/postgres/data/development:/var/lib/postgresql/data
+      - db-volume:/var/lib/postgresql/data
+
+volumes:
+  db-volume:

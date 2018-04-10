@@ -28,5 +28,3 @@
 /public/uploads
 
 /config/environments/*.yml
-
-docker-compose.yml
