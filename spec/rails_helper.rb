@@ -38,7 +38,6 @@ RSpec.configure do |config|
   # need this or you will get deadlocks in testing from delayed jobs
   config.include ActiveJob::TestHelper
 
-
   config.before(:each, type: :system) do
     driven_by :rack_test
   end

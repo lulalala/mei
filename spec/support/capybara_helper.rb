@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Capybara.configure do |config|
-  # Insert a <base> tag with the asset host into the pages created by save_and_open_page, 
+  # Insert a <base> tag with the asset host into the pages created by save_and_open_page,
   # meaning that relative links will be loaded from the development server if it is running.
   # This is useful for save_and_open_page so it will load JS + CSS and let you
   # debug with the browser developer tools
