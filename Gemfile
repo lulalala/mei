@@ -70,7 +70,6 @@ end
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw] # call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara', '~> 2.13' # Capybara system testing and selenium driver
-  # gem 'capybara-webkit'
   gem 'poltergeist'
   gem 'pry' # debugger
   gem 'selenium-webdriver' # browser automation framework and ecosystem

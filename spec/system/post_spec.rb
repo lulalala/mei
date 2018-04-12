@@ -16,23 +16,19 @@ RSpec.describe "Posting", js: true do
     visit board_path(board)
   end
 
+  let(:email_href) { find('.email')['href'] }
+
   it 'posts' do
-# binding.pry
     fill_in 'post[title]', with: title
     fill_in 'post[author]', with: author
     fill_in 'post[options_raw]', with: email
     fill_in 'post[content]', with: content
 
-    # perform_enqueued_jobs { click_on 'Create Post' }
-    click_on 'Create Post'
+    perform_enqueued_jobs { click_on 'Create Post' }
 
-# binding.pry
+    expect(page).to have_content(title)
+    expect(page).to have_content(author)
     expect(page).to have_content(content)
-
-
-    # fill_in "Name", :with => "My Widget"
-    # click_button "Create Widget"
-
-    # expect(page).to have_text("Widget was successfully created.")
+    expect(email_href).to include(email)
   end
 end

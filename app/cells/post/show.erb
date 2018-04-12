@@ -2,7 +2,7 @@
   <header class="info">
     <span class="id">#<%= @post.pos %></span>
     <% if @post.options_raw %>
-      <%= mail_to @post.options_raw do %><span class="author"><%= @post.author || "anonymous" %></span><% end %>
+      <%= mail_to @post.options_raw, class: 'email' do %><span class="author"><%= @post.author || "anonymous" %></span><% end %>
     <% else %>
       <span class="author"><%= @post.author %></span>
     <% end %>

@@ -8,10 +8,7 @@ RUN apt-get update && apt-get install -y \
     iceweasel \
     # rails asset pipeline
     nodejs \
-    # needed for capybara-webkit
-    # qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x xvfb
-    # qt5-default libqt5webkit5 gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x 
-    # Download phantomjs
+    # Download phantomjs, needed for Poltergeist capybara driver
     && cd /tmp \
     && curl -L -O https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PHANTOM_VERSION}-linux-x86_64.tar.bz2 \
     && tar xvjf phantomjs-${PHANTOM_VERSION}-linux-x86_64.tar.bz2 \

@@ -5,13 +5,9 @@ Capybara.configure do |config|
   # debug with the browser developer tools
   # source: https://coderwall.com/p/jsutlq/capybara-s-save_and_open_page-with-css-and-js
   config.asset_host = 'http://localhost:3000'
-
-  # config.javascript_driver = :webkit
 end
 
 # alias, because who wants to type that out every time?
 def page!
   save_page
-  # save_page Rails.root.join('public', 'capybara.html')
-  # %x(launchy http://localhost:3000/capybara.html)
 end
