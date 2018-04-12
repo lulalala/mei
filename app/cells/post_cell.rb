@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Cell for a Post
 class PostCell < Cell::Rails
   helper ApplicationHelper
 

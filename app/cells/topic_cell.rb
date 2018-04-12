@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Cell for a Topic
 class TopicCell < Cell::Rails
   def show(topic, omit: false)
     @topic = topic

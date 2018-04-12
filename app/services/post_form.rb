@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostForm
+class PostForm # :nodoc:
   include ActiveModel::Model
 
   attr_accessor :topic, :post

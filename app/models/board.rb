@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents an image board, for example /cat/ for Cat pictures and discussion
 class Board < ApplicationRecord
   has_many :topics, inverse_of: :board
 

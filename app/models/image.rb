@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Handles image uploading, URL generation, and other image
+# tasks. Always associated with a post.
 class Image < ApplicationRecord
   belongs_to :post, inverse_of: :images, optional: true
 

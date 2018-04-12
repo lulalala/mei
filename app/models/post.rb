@@ -2,6 +2,8 @@
 
 require 'auto_html/filters/quote'
 
+# Represents a single post from a user on an image board.
+# It can stand on its own, be nested under a topic, or nested under another post.
 class Post < ApplicationRecord
   belongs_to :topic, inverse_of: :posts
   has_many :images, inverse_of: :post, dependent: :destroy

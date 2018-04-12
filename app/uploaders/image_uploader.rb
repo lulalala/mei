@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Extends CarrierWave functionality with animation, thumbnail,
+# and other functionality.
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

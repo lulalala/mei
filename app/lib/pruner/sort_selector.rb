@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Selects topics which should be pruned based on max number and sorting order.
 module Pruner
+  # Selects topics which should be pruned based on max number and sorting order.
   class SortSelector
     # @param board [Board] board to be pruned from
     # @param max [Integer] maximum number of topics allowed to stay

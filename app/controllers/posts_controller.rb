@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostsController < ApplicationController
+class PostsController < ApplicationController # :nodoc:
   before_action :set_post, only: [:destroy]
 
   # POST /posts

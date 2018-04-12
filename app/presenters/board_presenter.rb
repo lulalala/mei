@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BoardPresenter < LulalalaPresenter::Base
+class BoardPresenter < LulalalaPresenter::Base # :nodoc:
   def representative_image_url
     model.config.dig(:seo, :image)
   end

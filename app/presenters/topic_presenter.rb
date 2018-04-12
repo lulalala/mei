@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TopicPresenter < LulalalaPresenter::Base
+class TopicPresenter < LulalalaPresenter::Base # :nodoc:
   def title
     if model.title.present?
       h.truncate(model.title, length: 50)

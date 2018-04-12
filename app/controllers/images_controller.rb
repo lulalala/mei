@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ImagesController < ApplicationController
+class ImagesController < ApplicationController # :nodoc:
   def create
     images = params[:images].map do |file|
       image = Image.create(image: file)
