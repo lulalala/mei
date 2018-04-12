@@ -25,8 +25,8 @@ RSpec.describe Post, type: :model do
     end
 
     let!(:board) { FactoryBot.create(:board) }
-    let!(:topic) { FactoryBot.create(:topic, board:board)}
-    let!(:post1) { FactoryBot.create(:post, topic:topic, content:'first post')}
+    let!(:topic) { FactoryBot.create(:topic, board: board)}
+    let!(:post1) { FactoryBot.create(:post, topic: topic, content: 'first post')}
 
     it "nests posts" do
       post2 = Post.create(topic: topic, content: "> 1 foo")
@@ -57,7 +57,7 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'locked topic' do
-    let!(:topic) { FactoryBot.create(:topic, locked:true)}
+    let!(:topic) { FactoryBot.create(:topic, locked: true)}
     subject { FactoryBot.build(:post, topic: topic) }
 
     it 'can not reply to locked topic' do

@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   has_many :images, inverse_of: :post, dependent: :destroy
 
   # Replies
-  has_many :links_as_parent, foreign_key: :ancestor_id, class_name:'Reply'
-  has_many :links_as_child, foreign_key: :descendant_id, class_name:'Reply'
+  has_many :links_as_parent, foreign_key: :ancestor_id, class_name: 'Reply'
+  has_many :links_as_child, foreign_key: :descendant_id, class_name: 'Reply'
   has_many :parents, through: :links_as_child, source: :ancestor
   has_many :children, through: :links_as_parent, source: :descendant
 

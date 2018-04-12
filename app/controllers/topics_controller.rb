@@ -22,7 +22,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/omitted
   def omitted
-    render layout:false
+    render layout: false
   end
 
 private

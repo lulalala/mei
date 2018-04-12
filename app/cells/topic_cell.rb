@@ -1,5 +1,5 @@
 class TopicCell < Cell::Rails
-  def show(topic, omit:false)
+  def show(topic, omit: false)
     @topic = topic
     @posts = @topic.posts.order(id: :asc).includes(:images)
     @omit = omit && topic_omittable?(topic)

@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       @topic = Topic.joins(:posts).find_by('posts.id' => params[:post_id])
     end
 
-    render layout:false
+    render layout: false
   end
 
   # DELETE /posts/1

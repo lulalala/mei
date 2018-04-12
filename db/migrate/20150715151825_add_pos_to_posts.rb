@@ -1,8 +1,8 @@
 class AddPosToPosts < ActiveRecord::Migration[5.1]
   def up
-    add_column :posts, :pos, :integer, limit:2, after: :topic_id, comment:'position of post within topic'
+    add_column :posts, :pos, :integer, limit: 2, after: :topic_id, comment: 'position of post within topic'
 
-    add_column :topics, :max_pos, :integer, limit:2, default:0, null:false, after: :board_id, comment:'current newest post pos, increment as posts are created'
+    add_column :topics, :max_pos, :integer, limit: 2, default: 0, null: false, after: :board_id, comment: 'current newest post pos, increment as posts are created'
 
     Post.reset_column_information
     Topic.all.each do |t|
@@ -15,7 +15,7 @@ class AddPosToPosts < ActiveRecord::Migration[5.1]
     Post.reset_column_information
 
     change_column_null :posts, :pos, false
-    add_index :posts, [:topic_id, :pos], unique:true
+    add_index :posts, [:topic_id, :pos], unique: true
   end
 
   def down

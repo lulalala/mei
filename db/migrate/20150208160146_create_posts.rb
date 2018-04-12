@@ -1,9 +1,9 @@
 class CreatePosts < ActiveRecord::Migration[5.1]
   def change
-    create_table :posts, comment:'text content posted. New post or reply comments are all posts.' do |t|
-      t.text :content, comment:'text content'
-      t.string :author, comment:'author name'
-      t.string :email, comment:'email'
+    create_table :posts, comment: 'text content posted. New post or reply comments are all posts.' do |t|
+      t.text :content, comment: 'text content'
+      t.string :author, comment: 'author name'
+      t.string :email, comment: 'email'
       t.references :topic, index: true
 
       t.timestamps null: false

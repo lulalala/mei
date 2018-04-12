@@ -13,7 +13,7 @@ module ApplicationHelper
   def render_custom_partial(name)
     ["partials/#{@board.seo_name}/#{name}", "partials/_global/#{name}"].each do |path|
       if lookup_context.template_exists?(path, nil, true)
-        return render(partial:path)
+        return render(partial: path)
       end
     end
 

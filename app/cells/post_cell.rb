@@ -20,7 +20,7 @@ class PostCell < Cell::Rails
   end
 
   def images(post)
-    @images = post.images.where(remote_url:nil)
+    @images = post.images.where(remote_url: nil)
     render if @images.size > 0
   end
 end

@@ -57,7 +57,7 @@ class PostForm
 
     if params[:images].present?
       params[:images].each do |file|
-        images << Image.new(image:file)
+        images << Image.new(image: file)
       end
     end
 
