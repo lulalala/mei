@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreatePosts < ActiveRecord::Migration[5.1]
+class CreatePosts < ActiveRecord::Migration[5.1] # :nodoc:
   def change
     create_table :posts, comment: 'text content posted. New post or reply comments are all posts.' do |t|
       t.text :content, comment: 'text content'

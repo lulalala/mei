@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddPosToPosts < ActiveRecord::Migration[5.1]
+class AddPosToPosts < ActiveRecord::Migration[5.1] # :nodoc:
   def up
     add_column :posts, :pos, :integer, limit: 2, after: :topic_id, comment: 'position of post within topic'
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateViewFragments < ActiveRecord::Migration[5.1]
+class CreateViewFragments < ActiveRecord::Migration[5.1] # :nodoc:
   def change
     create_table :view_fragments, comment: 'Custom HTML fragments to be displayed' do |t|
       t.references :board, foreign_key: true

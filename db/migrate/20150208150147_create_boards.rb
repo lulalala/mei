@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateBoards < ActiveRecord::Migration[5.1]
+class CreateBoards < ActiveRecord::Migration[5.1] # :nodoc:
   def change
     create_table :boards, comment: 'board' do |t|
       t.string :seo_name, null: false, comment: 'represent name in URL. Must be URL valid characters.'
