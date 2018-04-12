@@ -22,9 +22,9 @@ Requires `docker` and `docker-compose` installed on your box.
 
     cp config/environments/default.yml.example config/environments/default.yml
 
-    docker-compose up -d
+    docker-compose run --rm app bundle install --jobs 3
 
-    docker-compose exec app bundle install --path /bundle --jobs 3 --retry 3
+    docker-compose up -d
     
     docker-compose exec app bundle exec rake db:create 
 

@@ -20,10 +20,9 @@ RUN apk add --no-cache \
     readline-dev \
     tzdata
 
-ENV APP_DIR /app
-
 # Configure the main working directory. This is the base 
 # directory used in any further RUN, COPY, and ENTRYPOINT commands
+ENV APP_DIR /app
 RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
 
