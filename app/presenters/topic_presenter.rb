@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TopicPresenter < LulalalaPresenter::Base
   def title
     if model.title.present?

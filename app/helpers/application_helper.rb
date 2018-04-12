@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def render_body_classes
-    classes = [ params[:controller].tr('/','_'), params[:action] ]
+    classes = [params[:controller].tr('/', '_'), params[:action]]
     classes.join(' ')
   end
 

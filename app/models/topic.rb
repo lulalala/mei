@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Topic < ApplicationRecord
   belongs_to :board, inverse_of: :topics
   has_many :posts, inverse_of: :topic, dependent: :destroy
@@ -18,7 +20,7 @@ class Topic < ApplicationRecord
     now = Time.now
     update_columns(
       updated_at: now,
-      bumped_at: now,
+      bumped_at: now
     )
   end
 

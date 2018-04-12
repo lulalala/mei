@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateViewFragments < ActiveRecord::Migration[5.1]
   def change
     create_table :view_fragments, comment: 'Custom HTML fragments to be displayed' do |t|
@@ -7,6 +9,6 @@ class CreateViewFragments < ActiveRecord::Migration[5.1]
 
       t.timestamps null: false
     end
-    add_index :view_fragments, [:board_id, :name], unique: true
+    add_index :view_fragments, %i[board_id name], unique: true
   end
 end

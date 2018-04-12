@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 b = Board.first
 if b.topics.empty?
   topic = b.topics.create(title: 'topic title goes here')

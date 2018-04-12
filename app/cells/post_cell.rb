@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostCell < Cell::Rails
   helper ApplicationHelper
 
@@ -21,6 +23,6 @@ class PostCell < Cell::Rails
 
   def images(post)
     @images = post.images.where(remote_url: nil)
-    render if @images.size > 0
+    render unless @images.empty?
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe BoardConfigSerializer do
@@ -14,7 +16,7 @@ describe BoardConfigSerializer do
           per_page: 2
       END
 
-      described_class.load(yaml).should == {'pagination' => {'per_page' => 2} }
+      described_class.load(yaml).should == { 'pagination' => { 'per_page' => 2 } }
     end
   end
 
@@ -31,7 +33,7 @@ describe BoardConfigSerializer do
           per_page: 2
       END
 
-      described_class.load(yaml).should == {'pagination' => {'per_page' => 2} }
+      described_class.load(yaml).should == { 'pagination' => { 'per_page' => 2 } }
     end
   end
 
@@ -45,7 +47,7 @@ describe BoardConfigSerializer do
     end
 
     it 'dumps hash into YAML' do
-      described_class.dump({'a' => 1}).should == "---\na: 1\n"
+      described_class.dump('a' => 1).should == "---\na: 1\n"
     end
   end
 end

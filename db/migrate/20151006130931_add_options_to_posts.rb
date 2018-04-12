@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddOptionsToPosts < ActiveRecord::Migration[5.1]
   def up
     add_column :posts, :options, :string, after: :author, comment: 'array of options like sage'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 describe PruneJob do
   let(:board) { FactoryBot.create(:board) }
@@ -9,10 +11,10 @@ describe PruneJob do
         'max_page' => 2
       },
       'prune' => {
-        'selector_class' => "SortSelector",
+        'selector_class' => 'SortSelector',
         'selector_options' => {},
-        'remover_class' => "DestroyRemover",
-        'remover_options' => {},
+        'remover_class' => 'DestroyRemover',
+        'remover_options' => {}
       }
     }
   end
@@ -27,7 +29,7 @@ describe PruneJob do
     board.config.merge!(config_overrides)
   end
 
-  it "prunes topics so there are only 2 pages left" do
+  it 'prunes topics so there are only 2 pages left' do
     described_class.new.perform(board)
     board.topics.count.should == 4
   end

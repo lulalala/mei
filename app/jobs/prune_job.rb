@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Prunes a board.
 # The pruning process is divided into two parts,
 # the first part is the selection of topics to delete,

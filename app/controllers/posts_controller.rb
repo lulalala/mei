@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:destroy]
 
@@ -10,21 +12,21 @@ class PostsController < ApplicationController
       if @post_form.save
         flash[:notice] = 'Successfully created.'
 
-        format.json {
+        format.json do
           render json: {
             success: true,
             redirect_to: topic_path(@post_form.topic)
           }
-        }
+        end
         format.html { redirect_to @post_form.topic }
       else
         flash[:error] = @post_form.errors.adequate.messages.join('<br/>').html_safe
 
-        format.json {
+        format.json do
           render json: {
             success: false
           }
-        }
+        end
         format.html { redirect_to @post_form.topic }
       end
     end
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
     end
   end
 
-private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post

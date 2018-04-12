@@ -1,4 +1,6 @@
-SitemapGenerator::Sitemap.default_host = Setting.host()
+# frozen_string_literal: true
+
+SitemapGenerator::Sitemap.default_host = Setting.host
 
 SitemapGenerator::Sitemap.create include_root: false do
   Board.find_each do |board|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Serializing board config column.
 #
 # Any blank inputs will be converted to empty hash
@@ -6,7 +8,7 @@ class BoardConfigSerializer
     if i.blank?
       {}
     else
-      YAML.load(i)
+      YAML.safe_load(i)
     end
   end
 

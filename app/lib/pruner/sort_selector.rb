@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Selects topics which should be pruned based on max number and sorting order.
 module Pruner
   class SortSelector

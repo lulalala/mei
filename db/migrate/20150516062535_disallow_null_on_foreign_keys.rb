@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DisallowNullOnForeignKeys < ActiveRecord::Migration[5.1]
   def up
     change_column_null :topics, :board_id, false

@@ -1,7 +1,6 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 class ImageUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -34,7 +33,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :remove_animation
-    process :resize_to_fit => [250, 250]
+    process resize_to_fit: [250, 250]
     process :watermark
     process :store_thumb_dimensions
   end
@@ -47,7 +46,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     if model.remote_image_url.present?
       nil # extension check moved to Image model
     else
-      %w(jpg jpeg gif png)
+      %w[jpg jpeg gif png]
     end
   end
 
@@ -70,7 +69,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def watermark
     manipulate! do |img|
-      return img if !img.mime_type.include?('gif')
+      return img unless img.mime_type.include?('gif')
 
       img.combine_options do |cmd|
         cmd.gravity 'SouthEast'
@@ -84,9 +83,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def remove_animation
     manipulate! do |img|
-      if img.mime_type.match /gif/
-        img.collapse!
-      end
+      img.collapse! if img.mime_type.match?(/gif/)
       img
     end
   end

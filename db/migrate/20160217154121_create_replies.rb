@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReplies < ActiveRecord::Migration[5.1]
   def change
     create_table :replies, comment: 'replying relations between posts' do |t|

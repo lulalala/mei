@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoardPresenter < LulalalaPresenter::Base
   def representative_image_url
     model.config.dig(:seo, :image)

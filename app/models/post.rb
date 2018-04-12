@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'auto_html/filters/quote'
 
 class Post < ApplicationRecord
@@ -18,7 +20,7 @@ class Post < ApplicationRecord
     html_escape
     quote
     youtube
-    link :target => "_blank", :rel => "nofollow"
+    link target: '_blank', rel: 'nofollow'
     simple_format
   end
 
@@ -26,16 +28,12 @@ class Post < ApplicationRecord
 
   validate :validate_content
   def validate_content
-    if images.blank? && content.blank?
-      errors.add(:base, :no_content)
-    end
+    errors.add(:base, :no_content) if images.blank? && content.blank?
   end
 
   validate :validate_topic_lock
   def validate_topic_lock
-    if topic.locked?
-      errors.add(:topic, :locked)
-    end
+    errors.add(:topic, :locked) if topic.locked?
   end
 
   def options_raw=(value)
@@ -62,14 +60,14 @@ class Post < ApplicationRecord
     topic.increment_pos
   end
 
-private
+  private
 
   # Load post option modules to object's eigenclass.
   # This extends single object instance.
   def extend_options
     options.each do |option|
       klass = Post::Extension.const_get(option.camelize)
-      self.extend klass
+      extend klass
     end
   end
 
@@ -78,14 +76,14 @@ private
   def assign_reply
     return if content_html.blank?
 
-    pos_array = content_html.scan(REPLY_PATTERN).map{|m| m[1]}
+    pos_array = content_html.scan(REPLY_PATTERN).map { |m| m[1] }
     self.parents += Post.where(topic_id: topic_id, pos: pos_array)
   end
 
   before_save :extract_images
   def extract_images
     return if content_html.blank?
-    return if !content_changed?
+    return unless content_changed?
 
     content_html_dup = content_html.dup
 
@@ -95,14 +93,14 @@ private
       next if url.size != 1
 
       url = url.first
-      next if (line.sub(url,'').strip).size > 0
+      next unless line.sub(url, '').strip.empty?
 
       image = images.find_by(remote_image_url: url)
-      if !image
+      unless image
         image = Image.create(remote_image_url: url)
-        next if !image.valid?
+        next unless image.valid?
 
-        self.images << image
+        images << image
       end
 
       content_html_dup.gsub!(%r{<a.+?#{Regexp.quote(url)}.+?</a>}, image.presenter.cleared_linked_display)
@@ -117,7 +115,7 @@ private
 
     self.content_html = content_html.gsub(REPLY_PATTERN) do |match|
       pos = match[/\d+/].to_i
-      r = parents.find {|parent| parent.pos == pos}
+      r = parents.find { |parent| parent.pos == pos }
       if r
         url = Rails.application.routes.url_helpers.topic_path(
           board: r.topic.board,
@@ -134,7 +132,7 @@ private
   # TODO: check in before_save to block uploading
   after_create :update_file_attachable
   def update_file_attachable
-    if Image.joins(:post => :topic).where(:posts => {:topic => topic}).count > 100
+    if Image.joins(post: :topic).where(posts: { topic: topic }).count > 100
       topic.update_columns(file_attachable: false)
     end
   end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get '/' => 'application#index'
-  
+
   scope '/:board' do
     get '/' => 'topics#index', as: :board
     resources :topics, only: [:show] do
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
         get :omitted
       end
     end
-    resources :posts, only: [:create, :new]
+    resources :posts, only: %i[create new]
     resources :images, only: [:create]
   end
 

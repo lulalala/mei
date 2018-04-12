@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostForm
   include ActiveModel::Model
 
@@ -16,11 +18,11 @@ class PostForm
   # To be called right after new().
   # For params submitted from user.
   def from_params(params)
-    if params[:topic_id].present?
-      @topic = Topic.find(params[:topic_id])
-    else
-      @topic = Board.find(params[:board_id]).topics.build
-    end
+    @topic = if params[:topic_id].present?
+               Topic.find(params[:topic_id])
+             else
+               Board.find(params[:board_id]).topics.build
+             end
     @post = @topic.posts.build
     attributes(params)
     self
@@ -28,9 +30,7 @@ class PostForm
 
   def setup_post
     @post = @topic.posts.build
-    if @post.images.empty?
-      @post.images.build
-    end
+    @post.images.build if @post.images.empty?
   end
 
   def attributes(params)
@@ -39,12 +39,8 @@ class PostForm
     @post.images.concat build_images_from_params(params)
 
     if new_topic?
-      if params[:title]
-        @topic.title = params[:title]
-      end
-      if params[:board_id]
-        @topic.board_id = params[:board_id]
-      end
+      @topic.title = params[:title] if params[:title]
+      @topic.board_id = params[:board_id] if params[:board_id]
     end
   end
 
@@ -68,11 +64,10 @@ class PostForm
     validity = true
     errors.clear
     [post, topic].each do |object|
-      if !object.valid?
-        validity = false
-        object.errors.adequate.each do |error|
-          errors.adequate.import(error)
-        end
+      next if object.valid?
+      validity = false
+      object.errors.adequate.each do |error|
+        errors.adequate.import(error)
       end
     end
     validity
@@ -83,7 +78,7 @@ class PostForm
   end
 
   def save
-    return false if !valid?
+    return false unless valid?
 
     ActiveRecord::Base.transaction do
       @post.save! if @post.changed?
@@ -111,4 +106,3 @@ class PostForm
     end
   end
 end
-

@@ -1,9 +1,11 @@
-AutoHtml.add_filter(:quote) do |text, options|
+# frozen_string_literal: true
+
+AutoHtml.add_filter(:quote) do |text, _options|
   text.lines.each_with_object([]) do |line, new_text|
-    if line.start_with?("&gt;") || line.start_with?(">")
-      new_text << "<quote>#{line.chomp}</quote>\n"
-    else
-      new_text << line
-    end
+    new_text << if line.start_with?('&gt;', '>')
+                  "<quote>#{line.chomp}</quote>\n"
+                else
+                  line
+                end
   end.join
 end

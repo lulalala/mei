@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Contains all the topic related callbacks,
 class TopicCallbackJob < ActiveJob::Base
   queue_as :default

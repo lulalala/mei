@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
@@ -7,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_board
   def set_board
-    if !params[:board].blank?
+    unless params[:board].blank?
       @board = Board.find_by(seo_name: params[:board])
       default_url_options[:board] = params[:board]
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Board < ApplicationRecord
   has_many :topics, inverse_of: :board
 
@@ -24,7 +26,7 @@ class Board < ApplicationRecord
   def file_size
     file_size = 0
 
-    Image.joins(:post => :topic).where(:post => {:topic => {:board => self}}).find_each do |i|
+    Image.joins(post: :topic).where(post: { topic: { board: self } }).find_each do |i|
       file_size += i.file_size
     end
 

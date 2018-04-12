@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ImagePresenter < LulalalaPresenter::Base
   def linked_display
     h.link_to(

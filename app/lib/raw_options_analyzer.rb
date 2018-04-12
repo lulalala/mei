@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RawOptionsAnalyzer
   # @param text [String] raw option text to be analyzed
   # @param available_options [Array<String>] allowed options
