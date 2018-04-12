@@ -9,7 +9,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/app
-      - .docker/bundle:/bundle
+      - db-volume:/bundle
 
   postgres:
     image: postgres:9.6-alpine
@@ -23,3 +23,4 @@ services:
 
 volumes:
   db-volume:
+  bundler-volume:
