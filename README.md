@@ -90,3 +90,7 @@ You can replace `app/views/application/index.html` with whatever you want in ord
 `bottom_of_footer` footer content
 
 `after_form` content underneath the post form such as news or board rules
+
+## Specs
+
+To run system specs `docker-compose exec app xvfb-run -a bundle exec rspec spec/system` TODO: remove this, not necessary for poltergeist

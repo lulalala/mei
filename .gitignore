@@ -55,3 +55,5 @@ node_modules/
 /config/app_config.yml
 /config/environments/*.yml
 /public/uploads
+
+# Capybara testing with save_and_open_page

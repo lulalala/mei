@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Board, type: :model do
+RSpec.describe Board do
   describe '#config' do
     it 'uses global config as default' do
       Setting.dig('board')['foo'] = 1

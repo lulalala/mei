@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe Post do
   before do
     subject.stub(:board) { FactoryBot.create(:board) }
   end

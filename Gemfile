@@ -70,6 +70,8 @@ end
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw] # call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'capybara', '~> 2.13' # Capybara system testing and selenium driver
+  # gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'pry' # debugger
   gem 'selenium-webdriver' # browser automation framework and ecosystem
   gem 'spring' # speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -80,6 +82,7 @@ group :test do
   gem 'factory_bot_rails', '~> 4.8.2' # fixtures replacement
   gem 'guard-rspec', '~> 4.7' # allows to automatically & intelligently launch specs when files are modified
   gem 'rspec-rails', '~> 3.7' # rspec for rails
+  gem 'launchy' # save_and_open_page for system specs
   gem 'spring-commands-rspec', '~> 1.0.4' # implements the rspec command for Spring
   gem 'timecop', '~> 0.9.1' # freeze time in specs
 end
