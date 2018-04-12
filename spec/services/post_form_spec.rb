@@ -21,8 +21,8 @@ describe PostForm do
       it 'saves post with topic' do
         subject.save
 
-        subject.post.persisted?.should == true
-        subject.topic.persisted?.should == true
+        subject.post.persisted?.should eql(true)
+        subject.topic.persisted?.should eql(true)
       end
     end
 
@@ -40,21 +40,21 @@ describe PostForm do
       it 'saves post with topic' do
         subject.save
 
-        subject.post.persisted?.should == true
-        subject.post.images.size.should == 1
-        subject.topic.persisted?.should == true
+        subject.post.persisted?.should eql(true)
+        subject.post.images.size.should eql(1)
+        subject.topic.persisted?.should eql(true)
       end
     end
   end
 
   describe '#new_topic?' do
     it 'returns false if not persisted yet' do
-      subject.new_topic?.should == true
+      subject.new_topic?.should eql(true)
     end
 
     it 'returns true if persisted' do
       subject.save
-      subject.new_topic?.should == false
+      subject.new_topic?.should eql(false)
     end
   end
 
@@ -64,7 +64,7 @@ describe PostForm do
         subject.topic.stub(:valid?).and_return(false)
       end
       it 'returns false' do
-        subject.valid?.should == false
+        subject.valid?.should eql(false)
       end
     end
 
@@ -76,24 +76,24 @@ describe PostForm do
         )
       end
       it 'returns false' do
-        subject.valid?.should == false
-        subject.errors.adequate.messages.present?.should == true
+        subject.valid?.should eql(false)
+        subject.errors.adequate.messages.present?.should eql(true)
       end
     end
 
     context 'topic and post are valid' do
       it 'returns false' do
-        subject.valid?.should == true
+        subject.valid?.should eql(true)
       end
     end
 
     context 'called twice' do
       it 'clears error object when called again' do
         subject.post.content = ''
-        subject.valid?.should == false
+        subject.valid?.should eql(false)
         subject.post.content = 'foo'
-        subject.valid?.should == true
-        subject.errors.empty?.should == true
+        subject.valid?.should eql(true)
+        subject.errors.empty?.should eql(true)
       end
     end
   end

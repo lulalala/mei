@@ -16,7 +16,7 @@ describe Pruner::DestroyRemover do
     ids = [board.topics.first.id, board.topics.last.id]
     described_class.new(board, ids).perform
     board.topics.pluck(:id).should_not include(ids)
-    board.topics.count.should == 3
+    board.topics.count.should eql(3)
   end
 
   it 'does not destroy topic not belonging to the board' do
@@ -24,6 +24,6 @@ describe Pruner::DestroyRemover do
 
     described_class.new(board, ids).perform
 
-    board2.topics.pluck(:id).should == ids
+    board2.topics.pluck(:id).should eql(ids)
   end
 end

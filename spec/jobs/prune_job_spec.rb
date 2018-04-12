@@ -31,6 +31,6 @@ describe PruneJob do
 
   it 'prunes topics so there are only 2 pages left' do
     described_class.new.perform(board)
-    board.topics.count.should == 4
+    board.topics.count.should eql(4)
   end
 end

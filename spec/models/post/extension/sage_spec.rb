@@ -15,7 +15,7 @@ RSpec.describe Post::Extension::Sage do
       new_post.assign_attributes(content: 'foo', options_raw: 'sage')
       new_post.save
 
-      topic.reload.bumped_at.should == old_bumped_at
+      topic.reload.bumped_at.should eql(old_bumped_at)
     end
   end
 end

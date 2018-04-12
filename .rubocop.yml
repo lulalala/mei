@@ -1,3 +1,7 @@
-# AllCops:
-#   Exclude:
-#     - 'path/to/excluded/file.rb'
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'Guardfile'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'

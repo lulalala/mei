@@ -15,7 +15,7 @@ describe 'auto_html quote filter' do
 SOURCE
 
     result = auto_html(source) { quote }
-    result.should == <<~OUTPUT
+    result.should eql(<<~OUTPUT)
       <quote>> One</quote>
       <quote>>two</quote>
       three

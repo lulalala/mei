@@ -13,7 +13,7 @@ describe 'auto_html newline_to_br filter' do
 SOURCE
 
     result = auto_html(source) { newline_to_br }
-    result.should == <<~OUTPUT
+    result.should eql(<<~OUTPUT)
       foo<br/>
       bar<br/>
 OUTPUT
