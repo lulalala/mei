@@ -12,6 +12,8 @@ Mei is a Futaba-styled imageboard, allowing people to discuss and upload picture
 * Multi-board support
 * Extensible
 
+![mei](https://user-images.githubusercontent.com/28652/38708351-e63b15d6-3e83-11e8-985e-6a4e1512f6e6.png)
+
 ## Docker
 
 Requires `docker` and `docker-compose` installed on your box.
