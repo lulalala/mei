@@ -8,8 +8,9 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - bundler-volume:/bundle
       - .:/app
+      - bundler-volume:/bundle
+      - uploads-volume:/app/public/uploads
 
   postgres:
     image: postgres:9.6-alpine
@@ -24,3 +25,4 @@ services:
 volumes:
   db-volume:
   bundler-volume:
+  uploads-volume:
