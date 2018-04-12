@@ -6,7 +6,7 @@ class BoardPresenter < LulalalaPresenter::Base # :nodoc:
   end
 
   def og_image_tag
-    if image = representative_image_url
+    if (image = representative_image_url)
       h.tag(:meta, property: 'og:image', content: h.image_url(image))
     end
   end

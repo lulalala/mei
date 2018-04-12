@@ -13,7 +13,7 @@ describe PostForm do
   end
 
   subject do
-    subject = described_class.new.from_params(params)
+    described_class.new.from_params(params)
   end
 
   describe 'persistance' do

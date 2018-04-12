@@ -86,7 +86,7 @@ class PostForm # :nodoc:
     end
 
     true
-  rescue ActiveRecord::RecordInvalid => invalid
+  rescue ActiveRecord::RecordInvalid
     false
   end
 

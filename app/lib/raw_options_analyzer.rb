@@ -11,12 +11,14 @@ class RawOptionsAnalyzer # :nodoc:
     @tokens = text.split(' ')
   end
 
-  # @return [String, nil]
+  # @return [String]
   def email
     if @text.include?('@') # possible email
-      email = @tokens.find do |token|
+      @tokens.find do |token|
         token.match(/^\S+@\S+\.\S+$/)
       end
+    else
+      nil
     end
   end
 

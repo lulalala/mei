@@ -7,7 +7,7 @@ class Board < ApplicationRecord
   serialize :config, BoardConfigSerializer
   def config
     @cascaded_config ||= Setting.dig_and_wrap(:board).tap do |c|
-      if board_config = super
+      if (board_config = super)
         c.merge(board_config)
       end
     end

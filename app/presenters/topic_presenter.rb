@@ -13,7 +13,7 @@ class TopicPresenter < LulalalaPresenter::Base # :nodoc:
 
   def representative_image_url
     post = model.posts.first
-    if image = post.images.first
+    if (image = post.images.first)
       image.image.url
     else
       model.board.presenter.representative_image_url
@@ -21,7 +21,7 @@ class TopicPresenter < LulalalaPresenter::Base # :nodoc:
   end
 
   def og_image_tag
-    if image = representative_image_url
+    if (image = representative_image_url)
       h.tag(:meta, property: 'og:image', content: h.image_url(image))
     end
   end
