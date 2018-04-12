@@ -20,14 +20,21 @@ RUN apk add --no-cache \
     readline-dev \
     tzdata
 
-# Configure the main working directory. This is the base 
-# directory used in any further RUN, COPY, and ENTRYPOINT commands
+# Add app files into docker image
 ENV APP_DIR /app
 RUN mkdir $APP_DIR
 WORKDIR $APP_DIR
+COPY . .
 
-# Copy the main application.
-COPY . $APP_DIR
+# Add bundle entry point to handle bundle cache
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Set the Bundler path so we can cache it in local volume for dev
-ENV BUNDLE_PATH /bundle
+# Bundle installs with binstubs to our custom /bundle/bin volume path. 
+# Let system use those stubs.
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
