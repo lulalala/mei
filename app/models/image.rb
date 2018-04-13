@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Handles image uploading, URL generation, and other image
+# tasks. Always associated with a post.
 class Image < ApplicationRecord
   belongs_to :post, inverse_of: :images, optional: true
 
@@ -5,9 +9,7 @@ class Image < ApplicationRecord
 
   validate :pre_upload_check
   def pre_upload_check
-    if @invalid_reason.present?
-      errors.add(:image, @invalid_reason)
-    end
+    errors.add(:image, @invalid_reason) if @invalid_reason.present?
   end
 
   def remote_image_url=(url)
@@ -24,11 +26,7 @@ class Image < ApplicationRecord
       @invalid_reason = :invalid_image_file
     end
 
-    if @invalid_reason.nil?
-      super
-    else
-      nil
-    end
+    super if @invalid_reason.nil?
   end
 
   # @return file size in bytes

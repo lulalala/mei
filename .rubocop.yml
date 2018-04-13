@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'Guardfile'
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'

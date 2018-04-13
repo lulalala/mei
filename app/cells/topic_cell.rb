@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Cell for a Topic
 class TopicCell < Cell::Rails
-  def show(topic, omit:false)
+  def show(topic, omit: false)
     @topic = topic
     @posts = @topic.posts.order(id: :asc).includes(:images)
     @omit = omit && topic_omittable?(topic)
@@ -10,7 +13,7 @@ class TopicCell < Cell::Rails
   def omitted(topic)
     @topic = topic
 
-    return if !topic_omittable?(topic)
+    return unless topic_omittable?(topic)
 
     limit = @topic.posts.size - 1 - @topic.board.reply_omit_condition[:n_recent_only]
     @posts = @topic.posts.order(id: :asc).includes(:images).offset(1).limit(limit)
@@ -18,7 +21,7 @@ class TopicCell < Cell::Rails
     render
   end
 
-private
+  private
 
   def topic_omittable?(topic)
     Omit.omit?(

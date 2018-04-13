@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  app:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - bundler-volume:/bundle
+      - uploads-volume:/app/public/uploads
+
+  postgres:
+    image: postgres:9.6-alpine
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+    expose:
+      - '5432'
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+
+volumes:
+  db-volume:
+  bundler-volume:
+  uploads-volume:

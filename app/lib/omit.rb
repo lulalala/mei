@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Omit
   # @param total [Integer] total number of replies
   # @param n_recent_only [Integer] number of replies to show if omit occurs.
@@ -5,11 +7,9 @@ module Omit
   # @return [Boolean] whether omit should occur
   def self.omit?(total, n_recent_only, avoid_only_n_hidden = 0)
     if total - n_recent_only <= avoid_only_n_hidden
-      return false
-    elsif total > n_recent_only
-      true
-    else
       false
+    else
+      total > n_recent_only
     end
   end
 end

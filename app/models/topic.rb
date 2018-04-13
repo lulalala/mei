@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# A topic is a discussion point that posts can be nested under
 class Topic < ApplicationRecord
   belongs_to :board, inverse_of: :topics
   has_many :posts, inverse_of: :topic, dependent: :destroy
@@ -18,7 +21,7 @@ class Topic < ApplicationRecord
     now = Time.now
     update_columns(
       updated_at: now,
-      bumped_at: now,
+      bumped_at: now
     )
   end
 

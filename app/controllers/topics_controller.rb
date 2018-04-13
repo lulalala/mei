@@ -1,16 +1,17 @@
-class TopicsController < ApplicationController
-  before_action :set_topic, only: [:show, :omitted, :destroy]
+# frozen_string_literal: true
+
+class TopicsController < ApplicationController # :nodoc:
+  before_action :set_topic, only: %i[show omitted destroy]
 
   # GET /topics
   def index
-    @topics = @board.topics.order(bumped_at: :desc).
-      page(params[:page]).
-      per(@board.config.dig(:pagination, :per_page))
+    @topics = @board.topics.order(bumped_at: :desc)
+                    .page(params[:page])
+                    .per(@board.config.dig(:pagination, :per_page))
   end
 
   # GET /topics/1
-  def show
-  end
+  def show; end
 
   # DELETE /topics/1
   def destroy
@@ -22,10 +23,10 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/omitted
   def omitted
-    render layout:false
+    render layout: false
   end
 
-private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_topic

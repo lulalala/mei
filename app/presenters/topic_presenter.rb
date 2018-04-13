@@ -1,4 +1,6 @@
-class TopicPresenter < LulalalaPresenter::Base
+# frozen_string_literal: true
+
+class TopicPresenter < LulalalaPresenter::Base # :nodoc:
   def title
     if model.title.present?
       h.truncate(model.title, length: 50)
@@ -11,7 +13,7 @@ class TopicPresenter < LulalalaPresenter::Base
 
   def representative_image_url
     post = model.posts.first
-    if image = post.images.first
+    if (image = post.images.first)
       image.image.url
     else
       model.board.presenter.representative_image_url
@@ -19,8 +21,8 @@ class TopicPresenter < LulalalaPresenter::Base
   end
 
   def og_image_tag
-    if image = representative_image_url
-      h.tag(:meta, property:'og:image', content:h.image_url(image))
+    if (image = representative_image_url)
+      h.tag(:meta, property: 'og:image', content: h.image_url(image))
     end
   end
 end

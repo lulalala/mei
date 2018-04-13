@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def render_body_classes
-    classes = [ params[:controller].tr('/','_'), params[:action] ]
+    classes = [params[:controller].tr('/', '_'), params[:action]]
     classes.join(' ')
   end
 
@@ -13,7 +15,7 @@ module ApplicationHelper
   def render_custom_partial(name)
     ["partials/#{@board.seo_name}/#{name}", "partials/_global/#{name}"].each do |path|
       if lookup_context.template_exists?(path, nil, true)
-        return render(partial:path)
+        return render(partial: path)
       end
     end
 

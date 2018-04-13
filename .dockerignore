@@ -1,0 +1,9 @@
+.docker/**
+.git/**
+log/*
+tmp/*
+.travis.yml
+Dockerfile
+docker-compose.yml*
+MIT-LICENSE
+README.md

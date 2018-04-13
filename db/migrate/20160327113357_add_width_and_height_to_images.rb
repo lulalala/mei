@@ -1,4 +1,6 @@
-class AddWidthAndHeightToImages < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddWidthAndHeightToImages < ActiveRecord::Migration[5.1] # :nodoc:
   def change
     change_table :images do |t|
       t.integer :width, after: :image

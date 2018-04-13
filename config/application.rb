@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -7,7 +9,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Mei
-  class Application < Rails::Application
+  class Application < Rails::Application # :nodoc:
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

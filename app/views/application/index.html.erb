@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mei imageboard</title>
+  </head>
+  <body>
+    <h1>Welcome to Mei</h1>
+
+    <ul>
+      <% @boards.each do |board| %>
+        <li>
+          <%= link_to "/#{board.seo_name}/ #{board.name}", board_path(board) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <h2>Global Rules:</h2>
+    <%= render partial: 'partials/_global/rules' %>
+  </body>
+</html>

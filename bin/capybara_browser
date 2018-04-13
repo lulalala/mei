@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# In macOS you can use this with a LaunchControl agent to
+# automatically open the latest results of capybara + launchy
+# with save_and_open_page
+
+# Pick a flavor
+BROWSER = 'firefox'
+# BROWSER = 'chrome'
+# BROWSER = 'safari'
+
+# Pick a behavior
+AUTO_OPEN_IN_FOREGROUND = true
+# AUTO_OPEN_IN_FOREGROUND = false
+
+capybara_html_dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'tmp', 'capybara'))
+latest_file_path = Dir["#{capybara_html_dir}/*.html"].max_by { |f| File.mtime(f) }
+command = "open -a #{BROWSER} #{AUTO_OPEN_IN_FOREGROUND ? '' : '-g'} #{latest_file_path}"
+if `#{command}`
+  exit true
+else
+  exit false
+end

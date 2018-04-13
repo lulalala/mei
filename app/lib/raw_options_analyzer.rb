@@ -1,4 +1,6 @@
-class RawOptionsAnalyzer
+# frozen_string_literal: true
+
+class RawOptionsAnalyzer # :nodoc:
   # @param text [String] raw option text to be analyzed
   # @param available_options [Array<String>] allowed options
   # @return [String, nil]
@@ -9,12 +11,14 @@ class RawOptionsAnalyzer
     @tokens = text.split(' ')
   end
 
-  # @return [String, nil]
+  # @return [String]
   def email
     if @text.include?('@') # possible email
-      email = @tokens.find do |token|
+      @tokens.find do |token|
         token.match(/^\S+@\S+\.\S+$/)
       end
+    else
+      nil
     end
   end
 
