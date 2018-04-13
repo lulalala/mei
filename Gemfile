@@ -8,7 +8,7 @@ end
 gem 'bundler', '>= 1.8.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.4'
+gem 'rails', '5.2.0'
 # database
 gem 'pg', '~> 0.18.2'
 # Use Puma as the app server
@@ -76,6 +76,9 @@ end
 
 gem 'sucker_punch', '~> 2.0.1'
 
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -93,7 +96,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'mysql2', '~> 0.3.18' # Sequel Pro is too good that I can't escape MySQL
+  gem 'mysql2', '~> 0.5.1' # Sequel Pro is too good that I can't escape MySQL
 end
 
 group :test, :darwin do
