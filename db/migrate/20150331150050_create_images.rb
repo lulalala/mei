@@ -1,4 +1,4 @@
-class CreateImages < ActiveRecord::Migration
+class CreateImages < ActiveRecord::Migration[4.2]
   def change
     create_table :images, comment:'image' do |t|
       t.references :post, index: true, foreign_key: true

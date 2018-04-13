@@ -1,4 +1,4 @@
-class CreateTopics < ActiveRecord::Migration
+class CreateTopics < ActiveRecord::Migration[4.2]
   def change
     create_table :topics, comment:'topic of discussion, also called thread' do |t|
       t.string :title, comment:'title'
